@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { 
   ShieldCheck, 
@@ -72,15 +71,45 @@ export default function OrganicPsylliumPage() {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30">
-              <Image
-                src="/images/psyllium_quality_lab.jpg"
-                alt="Organic psyllium laboratory verification and pesticide testing"
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-emerald-800/20 bg-gradient-to-br from-emerald-950 via-forest-dark to-forest p-6 sm:p-8 text-ivory flex flex-col justify-between shadow-xl card-hover group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span>Certified Organic Chain</span>
+                </span>
+                <span className="text-xs font-bold text-gold">NPOP &bull; USDA &bull; EU</span>
+              </div>
+
+              <div className="space-y-3 my-auto py-4">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 group-hover:scale-110 transition-transform">
+                  <Leaf className="w-6 h-6" />
+                </div>
+                <h3 className="font-editorial text-2xl font-bold text-ivory">
+                  100% Certified Ecological Origin
+                </h3>
+                <p className="text-xs text-cream/80 leading-relaxed">
+                  Cultivated without synthetic pesticides, synthetic nitrogen fertilizers, or chemical fumigants. Certified from farm plot to final export consignment.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-3 border-t border-emerald-700/30 text-[11px]">
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Zero Pesticide Residue</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Non-GMO Project Aligned</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Segregated Milling</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>Batch QR Traceability</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -186,7 +215,7 @@ export default function OrganicPsylliumPage() {
               Export Traceability Packaging
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed">
-              Organic lots are packed in clean, food-grade 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag (or Private Labeled option) with explicit organic lot traceability numbering to ensure seamless import customs clearance.
+              Organic lots are packed in clean, food-grade 25 KG Export Bags (or Private Labeled option) with explicit organic lot traceability numbering to ensure seamless import customs clearance.
             </p>
           </div>
         </div>

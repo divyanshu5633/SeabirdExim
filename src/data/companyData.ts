@@ -93,7 +93,7 @@ export const companyData: CompanyData = {
     {
       number: '03',
       title: 'Export-Ready Packaging',
-      description: 'Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag ensures total protection during ocean transit. Private Labeled option also available.',
+      description: 'Seaworthy 25 KG Export Bags ensure total moisture protection during transoceanic shipping. Private Labeled options also available.',
     },
     {
       number: '04',

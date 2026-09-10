@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { ArrowRight, Leaf, ShieldCheck, Package, CheckCircle2 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -40,29 +39,100 @@ export default function ProductsPage() {
                   isFlagship ? 'border-forest/40 ring-1 ring-forest/20 shadow-md' : 'border-cream-dark shadow-xs'
                 } p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center`}
               >
-                {/* Product Visual */}
+                {/* Product Visual Showcase */}
                 <div className="lg:col-span-5 relative">
-                  <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-cream/40 border border-cream-dark">
-                    <Image
-                      src={
-                        isFlagship
-                          ? '/images/psyllium_husk_hero.jpg'
-                          : isOrganic
-                          ? '/images/psyllium_quality_lab.jpg'
-                          : '/images/psyllium_packaging_export.jpg'
-                      }
-                      alt={product.title}
-                      fill
-                      className="object-cover object-center"
-                      sizes="(max-width: 1024px) 100vw, 40vw"
-                    />
-
-                    {isFlagship && (
-                      <div className="absolute top-4 left-4 bg-forest text-ivory text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-xs">
-                        Primary Focus Commodity
+                  {isFlagship ? (
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-forest-dark via-forest to-forest-light p-6 sm:p-8 text-ivory flex flex-col justify-between shadow-md card-hover group">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider">
+                          Primary Export Commodity
+                        </span>
+                        <span className="text-xs font-bold text-gold">85% &ndash; 99% Purity</span>
                       </div>
-                    )}
-                  </div>
+                      <div className="my-auto py-4 space-y-2">
+                        <div className="text-xs font-semibold text-gold-light uppercase tracking-widest">
+                          Plantago Ovata &bull; India Origin
+                        </div>
+                        <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-ivory">
+                          Psyllium Husk
+                        </h3>
+                        <p className="text-xs text-cream/80 leading-relaxed">
+                          Natural soluble dietary fiber &amp; hydrocolloid binder. Sourced directly from certified Gujarat &amp; Rajasthan cultivation belts.
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/20 text-[11px] text-cream/90">
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
+                          <span>Whole Flakes &amp; Powders</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
+                          <span>25 KG Export Bags</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : isOrganic ? (
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-emerald-950 via-forest-dark to-forest p-6 sm:p-8 text-ivory flex flex-col justify-between shadow-md card-hover group">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                          <span>Certified Organic</span>
+                        </span>
+                        <span className="text-xs font-bold text-gold">NPOP &bull; USDA &bull; EU</span>
+                      </div>
+                      <div className="my-auto py-4 space-y-2">
+                        <div className="text-xs font-semibold text-emerald-300 uppercase tracking-widest">
+                          100% Organic Supply Chain
+                        </div>
+                        <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-ivory">
+                          Organic Psyllium
+                        </h3>
+                        <p className="text-xs text-cream/80 leading-relaxed">
+                          Eco-certified without synthetic fertilizers or chemical fumigants. Complete farm-to-consignment traceability documentation.
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-emerald-700/30 text-[11px] text-cream/90">
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span>Zero Pesticides</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                          <span>Segregated Processing</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-charcoal via-forest-dark to-forest p-6 sm:p-8 text-ivory flex flex-col justify-between shadow-md card-hover group">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 rounded-full bg-gold/20 border border-gold/40 text-gold-light text-[10px] font-bold uppercase tracking-wider">
+                          OEM &bull; Brand Owners
+                        </span>
+                        <span className="text-xs font-bold text-gold">Custom Packaging</span>
+                      </div>
+                      <div className="my-auto py-4 space-y-2">
+                        <div className="text-xs font-semibold text-gold-light uppercase tracking-widest">
+                          Turnkey Contract Export
+                        </div>
+                        <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-ivory">
+                          Private Label Solutions
+                        </h3>
+                        <p className="text-xs text-cream/80 leading-relaxed">
+                          Complete sourcing and packaging coordination. Private labeled export bags, food-contact liners, batch marking, and port logistics.
+                        </p>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/20 text-[11px] text-cream/90">
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
+                          <span>Buyer Artwork Support</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
+                          <span>FCL Container Delivery</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Product Information */}

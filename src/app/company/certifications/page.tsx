@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Metadata } from 'next';
 import { 
   ShieldCheck, 
@@ -109,15 +108,45 @@ export default function CertificationsPage() {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30">
-              <Image
-                src="/images/psyllium_quality_lab.jpg"
-                alt="Analytical food science laboratory bench verifying Psyllium parameters"
-                fill
-                priority
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 40vw"
-              />
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-forest-soft bg-forest-dark p-6 sm:p-8 text-ivory flex flex-col justify-between shadow-xl card-hover group">
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 rounded-full bg-forest text-ivory text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                  <span>ISO 17025 Accredited Protocols</span>
+                </span>
+                <span className="text-xs font-bold text-gold">USP &bull; BP &bull; EP</span>
+              </div>
+
+              <div className="space-y-3 my-auto py-4">
+                <div className="w-12 h-12 rounded-2xl bg-forest/40 border border-forest-light/40 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                  <Microscope className="w-6 h-6" />
+                </div>
+                <h3 className="font-editorial text-2xl font-bold text-ivory">
+                  Comprehensive Analytical Oversight
+                </h3>
+                <p className="text-xs text-cream/80 leading-relaxed">
+                  Every lot is analyzed under strict laboratory methods. Verification encompasses swell volume, purity assay, micro-panel, heavy metals, and residual moisture.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 pt-3 border-t border-forest/40 text-[11px]">
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span>Swell Index (USP up to &ge; 60 ml/g)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span>Heavy Metals (ICP-MS)</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span>Salmonella / E. coli Neg.</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-cream/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  <span>Moisture &le; 10%</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

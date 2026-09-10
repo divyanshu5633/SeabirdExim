@@ -6,7 +6,7 @@ export const exportProcessSteps: ExportStep[] = [
     title: 'Requirement Definition',
     tagline: 'Specification, Grade & Destination',
     description: 'Share your exact product specification, target purity grade (85%–99%), estimated volume (MT), preferred packaging, and destination port.',
-    details: ['Product & purity selection', 'Packaging: 25 kg paper bag with inner poly & outer HDPE liner or Private Label', 'Target destination port & timeline', 'Downstream application context'],
+    details: ['Product & purity selection', 'Packaging: 25 KG Export Bags or Private Labeled', 'Target destination port & timeline', 'Downstream application context'],
   },
   {
     step: '02',
@@ -33,8 +33,8 @@ export const exportProcessSteps: ExportStep[] = [
     step: '05',
     title: 'Export Packing & Inspection',
     tagline: 'Protective Seaworthy Packaging',
-    description: 'Cargo is packed as 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag (or Private Labeled option), and inspected for seaworthiness prior to container stuffing.',
-    details: ['Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag', 'Private Labeled Option available', 'Container loading supervision', 'Desiccant placement for moisture control'],
+    description: 'Cargo is packed into high-grade 25 KG Export Bags (or Private Labeled option), and inspected for seaworthiness prior to container stuffing.',
+    details: ['25 KG Export Bags', 'Private Labeled Option available', 'Container loading supervision', 'Desiccant placement for moisture control'],
   },
   {
     step: '06',

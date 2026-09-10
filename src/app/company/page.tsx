@@ -62,16 +62,203 @@ export default function CompanyPage() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30">
+          <div className="lg:col-span-5 relative group">
+            <div className="absolute -inset-2 bg-gradient-to-r from-forest/20 via-gold/15 to-sage/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30 shimmer-sweep animate-float-slow">
               <Image
-                src="/images/psyllium_husk_hero.jpg"
-                alt="Seabird EXIM Surat Gujarat Psyllium export operations"
+                src="/images/company_surat_desk.jpg"
+                alt="Seabird EXIM corporate trade operations desk in Surat, Gujarat"
                 fill
                 priority
-                className="object-cover object-center"
+                className="object-cover object-center img-hover-zoom"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
+              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-cream-dark shadow-md flex items-center justify-between">
+                <div>
+                  <div className="text-[10px] uppercase font-bold tracking-wider text-sage-dark">
+                    Trade Headquarters
+                  </div>
+                  <div className="font-editorial text-sm font-bold text-forest">
+                    Surat, Gujarat &bull; India
+                  </div>
+                </div>
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-forest text-ivory">
+                  Global Desk
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Seabird Story Lineup */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <SectionHeader
+          eyebrow="Our Journey &amp; Lineup"
+          title="The Seabird Story: From Gujarat Heartland to Global Seaports"
+          description="Founded at the mercantile crossroads of Surat, Seabird EXIM bridges multigenerational farming belts with high-precision international supply chains."
+        />
+
+        <div className="space-y-12 sm:space-y-16">
+          {/* Milestone 01: Origins & Soil */}
+          <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center card-hover">
+            <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-light text-forest text-xs font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-gold" />
+                <span>Chapter 01 &bull; Roots in the Agricultural Belt</span>
+              </div>
+              <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
+                Grounded in the Heart of India&apos;s Psyllium Capital
+              </h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">
+                Gujarat and southwestern Rajasthan yield over 85% of the planet&apos;s commercial Psyllium (Plantago ovata). Having our operating headquarters in Surat places Seabird EXIM directly adjacent to the key cultivation tracts, auction mandis, and multi-generational grower clusters.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Direct Mandi Relations</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Direct crop intelligence during seasonal arrivals</div>
+                </div>
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Authentic Traceability</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Farm-to-consignment origin integrity</div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-6 order-1 lg:order-2 group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-md bg-cream/20 shimmer-sweep">
+                <Image
+                  src="/images/story_roots_gujarat.jpg"
+                  alt="Rural agricultural heritage and Psyllium harvest fields in Gujarat"
+                  fill
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-charcoal/80 backdrop-blur-md text-ivory text-[10px] font-bold tracking-wider uppercase">
+                  Agricultural Belt &bull; Western India
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Milestone 02: Advanced Milling & Sorting */}
+          <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center card-hover">
+            <div className="lg:col-span-6 group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-md bg-cream/20 shimmer-sweep">
+                <Image
+                  src="/images/story_processing_mill.jpg"
+                  alt="Modern clean Sortex optical cleaning and pneumatic aspiration plant"
+                  fill
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold tracking-wider uppercase flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                  <span>Optical Sortex Grading</span>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-6 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-light text-forest text-xs font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-forest" />
+                <span>Chapter 02 &bull; Precision Mechanical Separation</span>
+              </div>
+              <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
+                State-of-the-Art Processing Coordination
+              </h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">
+                Raw psyllium seed holds only 25% to 30% husk by mass. Extracting high-purity translucent fiber requires precision multi-stage processing: pneumatic de-stoning, aspiration, multi-deck sifting, and high-speed optical sortex lines to eliminate extraneous seed matter without shearing delicate mucilaginous cells.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">85% to 99% Purity Range</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Calibrated output tailored to buyer specification</div>
+                </div>
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Pneumatic Air Separation</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Gentle cleaning preventing mucilage destruction</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Milestone 03: Analytical QA & Swell Testing */}
+          <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center card-hover">
+            <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-light text-forest text-xs font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-gold" />
+                <span>Chapter 03 &bull; Pharmacopeial Verification</span>
+              </div>
+              <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
+                Analytical Testing Before Any Lot Dispatches
+              </h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">
+                We believe true trade excellence lies in verification. Every batch is analyzed against international pharmacopeial criteria (USP, BP, EP) — measuring rapid swelling index (up to ≥ 60 ml/g), moisture retention ≤ 10%, heavy metals (ICP-MS), and stringent microbiological standards.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Batch COA Guarantee</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Accredited laboratory metrics with each container</div>
+                </div>
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Monograph Compliance</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Satisfying strict US &amp; European food/pharma codes</div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-6 order-1 lg:order-2 group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-md bg-cream/20 shimmer-sweep">
+                <Image
+                  src="/images/story_qa_testing.jpg"
+                  alt="Analytical chemists testing psyllium swelling volume and microbiological safety"
+                  fill
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold tracking-wider uppercase">
+                  USP / EP Swell Volume QA
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Milestone 04: Seaworthy Packaging & Ocean Dispatch */}
+          <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center card-hover">
+            <div className="lg:col-span-6 group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-md bg-cream/20 shimmer-sweep">
+                <Image
+                  src="/images/story_shipping_dispatch.jpg"
+                  alt="Export logistics warehouse with pallets of 25 KG Export Bags loaded into ocean freight container"
+                  fill
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold tracking-wider uppercase flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                  <span>25 KG Export Bags Standard</span>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-6 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-light text-forest text-xs font-bold uppercase tracking-wider">
+                <span className="w-2 h-2 rounded-full bg-forest" />
+                <span>Chapter 04 &bull; Transoceanic Maritime Logistics</span>
+              </div>
+              <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
+                Protecting Cargo Across Thousands of Nautical Miles
+              </h3>
+              <p className="text-sm text-charcoal-muted leading-relaxed">
+                Because soluble fiber is highly hygroscopic, maritime transit requires zero compromise. All consignments are packed in seaworthy 25 KG Export Bags with internal moisture locks (or custom Private Labeled options), palletized with shrink wrap and desiccant bags, and loaded for rapid dispatch through Mundra and Kandla seaports.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">25 KG Export Bags</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Heavy-duty multi-barrier moisture protection</div>
+                </div>
+                <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
+                  <div className="font-bold text-forest">Container Loading Supervision</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Pre-trip container inspection &amp; desiccant staging</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -113,39 +300,6 @@ export default function CompanyPage() {
               <p>
                 From pre-shipment sample dispatch and container stuffing supervision to phytosanitary clearance and maritime documentation, our Surat trade coordinators manage the complete logistics pipeline.
               </p>
-            </div>
-          </div>
-
-          {/* Infrastructure Dual Visual Showcase */}
-          <div className="pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-sm bg-cream/20 card-hover">
-                <Image
-                  src="/images/psyllium_field_harvest.jpg"
-                  alt="Harvesting psyllium in Gujarat rural agricultural belt"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div className="text-[11px] text-charcoal-muted italic">
-                Agricultural Origin: Certified Plantago ovata harvest tracts in Gujarat &amp; Rajasthan
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-sm bg-cream/20 card-hover">
-                <Image
-                  src="/images/psyllium_packaging_export.jpg"
-                  alt="Export logistics warehouse with pallets of 25kg psyllium bags"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-              <div className="text-[11px] text-charcoal-muted italic">
-                Export Infrastructure: 25 KG net fresh paper bags with inner poly liner, safety liner lock & outer HDPE bag ready for seaport dispatch
-              </div>
             </div>
           </div>
         </div>

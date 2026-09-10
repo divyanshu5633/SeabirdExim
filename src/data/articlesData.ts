@@ -23,7 +23,7 @@ export const articlesData: ArticleItem[] = [
           heading: 'Application Mapping: Which Grade Belongs in Your Pipeline?',
           paragraphs: [
             '85% to 90% Grades: Frequently selected for cost-efficient bulk dietary fiber, agricultural animal supplements (such as equine sand colic regimens), and industrial binding agents where darker appearance is non-consequential.',
-            '95% Grade: The global standard workhorse. Widely specified by gluten-free industrial bakeries, standard food formulations, and mid-tier dietary fiber brands due to its robust balance of swell volume (typically ≥ 45–50 ml/g) and commercial value.',
+            '95% Grade: The global standard workhorse. Widely specified by gluten-free industrial bakeries, standard food formulations, and mid-tier dietary fiber brands due to its robust balance of swell volume (≥ 40 ml/g, moisture ≤ 10%, light extraneous matter ≤ 5%) and commercial value.',
             '98% to 99% Grades: The gold standard for pharmaceutical preparations, effervescent fiber drink mixes, and clean-label dietary capsules. These grades provide pristine light ivory appearance and minimal sediment when hydrated.',
           ],
           keyTakeaway: 'For pharmaceutical and beverage mixes, 98%–99% is recommended. For bakery and bulk dietary fiber, 95% is commonly specified.',
@@ -68,7 +68,7 @@ export const articlesData: ArticleItem[] = [
         {
           heading: 'Storage and Handling Considerations',
           paragraphs: [
-            'Because powdered husk possesses significantly greater surface area, it is noticeably more hygroscopic than whole husk. Bags must remain hermetically sealed within fresh paper bags with inner poly liner and outer HDPE protection until actual processing begins.',
+            'Because powdered husk possesses significantly greater surface area, it is noticeably more hygroscopic than whole husk. Bags must remain hermetically sealed within 25 KG Export Bags until actual processing begins.',
           ],
         },
       ],
@@ -89,14 +89,14 @@ export const articlesData: ArticleItem[] = [
         {
           heading: '1. Verified Batch Certificate of Analysis (COA)',
           paragraphs: [
-            'Never rely on a generic product spec sheet. Ensure your exporter provides a batch-specific COA covering moisture content (typically ≤ 11.5% to 12%), total ash, acid-insoluble ash, heavy metals (Pb, As, Cd, Hg), and full microbiological screening (Total Viable Count, Yeast & Mold, E. coli, Salmonella).',
+            'Never rely on a generic product spec sheet. Ensure your exporter provides a batch-specific COA covering moisture content (≤ 10% for export grades 95%–99%), total ash, acid-insoluble ash, heavy metals (Pb, As, Cd, Hg), and full microbiological screening (Total Viable Count, Yeast & Mold, E. coli, Salmonella).',
           ],
           keyTakeaway: 'Always cross-check that test limits align with destination country food safety standards.',
         },
         {
           heading: '2. Seaworthy Packaging Integrity',
           paragraphs: [
-            'Ocean transit exposes containers to dramatic humidity and temperature shifts. Export bags must feature fresh paper bags with an inner poly liner with safety liner lock and extra outer HDPE bag protection.',
+            'Ocean transit exposes containers to dramatic humidity and temperature shifts. Standard export consignments must feature heavy-duty 25 KG Export Bags with secure internal liner protection.',
             'Ask whether container desiccants will be installed to prevent container sweat and mold formation during long sea voyages.',
           ],
         },
@@ -124,13 +124,13 @@ export const articlesData: ArticleItem[] = [
         {
           heading: 'Swell Volume (Swelling Index)',
           paragraphs: [
-            'Measured in ml/g, swell volume indicates how many milliliters of mucilage 1 gram of husk forms after 24 hours of hydration in water. Higher purity grades deliver higher swell volumes (e.g. 50–55+ ml/g for 98% and 99%), making it a critical test for functional dosage efficiency.',
+            'Measured in ml/g, swell volume indicates how many milliliters of mucilage 1 gram of husk forms after 24 hours of hydration in water. Higher purity grades deliver superior swell volumes (≥ 40 ml/g for 95%, ≥ 50 ml/g for 98%, and ≥ 60 ml/g for 99%), making it a critical test for functional dosage efficiency.',
           ],
         },
         {
           heading: 'Moisture Content',
           paragraphs: [
-            'Psyllium is intrinsically hygroscopic. Keeping moisture strictly below 11.5%–12.0% is essential for microbial stability and preventing lumping or mold development during transit.',
+            'Psyllium is intrinsically hygroscopic. Official COA thresholds specify moisture content ≤ 10% for export grades (95%, 98%, 99%) to guarantee microbial stability and prevent lumping during ocean transit.',
           ],
         },
         {
@@ -155,10 +155,10 @@ export const articlesData: ArticleItem[] = [
       intro: 'Because Psyllium Husk absorbs up to 50 times its weight in water, improper packing during maritime ocean transit can compromise an entire container. Here is how export-ready packing safeguards your cargo.',
       sections: [
         {
-          heading: '25 KG Fresh Paper Bag with Inner Poly Liner, Safety Liner Lock & Outer HDPE Bag',
+          heading: '25 KG Export Bags Standard',
           paragraphs: [
-            'Seabird EXIM adopts a premium packaging standard: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag.',
-            'This advanced multi-barrier system shields the botanical fiber from atmospheric moisture, ocean humidity, odor transfer, and transit stress.',
+            'Seabird EXIM adopts the international standard: durable, moisture-protected 25 KG Export Bags fitted with internal barrier liners.',
+            'This packaging shields the botanical fiber from atmospheric moisture, ocean humidity, odor transfer, and transit stress.',
           ],
         },
         {

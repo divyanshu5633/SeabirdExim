@@ -14,7 +14,7 @@ export default function RFQBuilder() {
   const [purity, setPurity] = useState('');
   const [purityError, setPurityError] = useState(false);
   const [quantity, setQuantity] = useState('10 MT');
-  const [packaging, setPackaging] = useState('25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag');
+  const [packaging, setPackaging] = useState('25 KG Export Bags');
   const [application, setApplication] = useState('Food & Beverage');
   const [destinationCountry, setDestinationCountry] = useState('');
   const [additionalNotes, setAdditionalNotes] = useState('');
@@ -179,8 +179,8 @@ export default function RFQBuilder() {
                 onChange={(e) => setPackaging(e.target.value)}
                 className="w-full px-4 py-3 rounded-lg bg-white border border-cream-dark text-sm text-charcoal focus:border-forest focus:ring-1 focus:ring-forest transition-colors"
               >
-                <option value="Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag">
-                  25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag
+                <option value="25 KG Export Bags">
+                  25 KG Export Bags
                 </option>
                 <option value="Private Labeled Option">
                   Private Labeled Option

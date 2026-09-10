@@ -3,6 +3,8 @@ export type PurityGrade = '85%' | '90%' | '95%' | '98%' | '99%';
 export interface PuritySpec {
   grade: PurityGrade;
   name: string;
+  description?: string;
+  testMethod?: string;
   swellVolume: string;
   lightExtraneousMatter: string;
   heavyExtraneousMatter: string;

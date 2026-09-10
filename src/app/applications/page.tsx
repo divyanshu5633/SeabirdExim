@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { 
   Utensils, 
   Pill, 
@@ -22,6 +23,15 @@ export const metadata: Metadata = {
   title: 'Psyllium Husk Applications | Food, Pharma, Nutraceutical & Bakery',
   description:
     'Discover how Psyllium Husk is utilized as a natural soluble fiber, hydrocolloid binder, and structural gluten-free baking ingredient across international industries.',
+};
+
+const appImageMap: Record<string, string> = {
+  'food-and-beverage': '/images/app_food_beverage.jpg',
+  'nutraceuticals': '/images/app_nutraceuticals.jpg',
+  'pharmaceutical': '/images/app_pharma_prep.jpg',
+  'gluten-free-bakery': '/images/app_bakery_bread.jpg',
+  'animal-nutrition': '/images/app_animal_nutrition.jpg',
+  'cosmetics-and-personal-care': '/images/app_cosmetics_gel.jpg',
 };
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -55,12 +65,12 @@ export default function ApplicationsPage() {
             <div
               key={app.id}
               id={app.id}
-              className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs hover:border-sage transition-all duration-200"
+              className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-10 lg:p-12 shadow-xs hover:border-sage transition-all duration-300 card-hover group"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                <div className="lg:col-span-8 space-y-4">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                <div className="lg:col-span-7 space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-xl bg-sage-light text-forest">
+                    <div className="p-3 rounded-xl bg-sage-light text-forest group-hover:scale-110 transition-transform duration-300">
                       {iconMap[app.icon]}
                     </div>
                     <div>
@@ -117,20 +127,38 @@ export default function ApplicationsPage() {
                   </div>
                 </div>
 
-                {/* Right Side Common Formats & CTA */}
-                <div className="lg:col-span-4 bg-cream/30 rounded-2xl p-6 border border-cream-dark space-y-5 h-full flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xs uppercase font-bold tracking-wider text-charcoal mb-3">
-                      Common Downstream Formats
-                    </h3>
-                    <ul className="space-y-2 text-xs text-charcoal">
-                      {app.examples.map((ex, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
-                          <span>{ex}</span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* Right Side Visual, Common Formats & CTA */}
+                <div className="lg:col-span-5 bg-cream/30 rounded-2xl p-6 border border-cream-dark space-y-5 h-full flex flex-col justify-between">
+                  <div className="space-y-4">
+                    {appImageMap[app.id] && (
+                      <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-sm bg-cream/20 shimmer-sweep">
+                        <Image
+                          src={appImageMap[app.id]}
+                          alt={`${app.title} psyllium application`}
+                          fill
+                          className="object-cover object-center img-hover-zoom transition-transform duration-700"
+                          sizes="(max-width: 1024px) 100vw, 35vw"
+                        />
+                        <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 animate-pulse-glow">
+                          <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                          <span>Formulation Sector</span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div>
+                      <h3 className="text-xs uppercase font-bold tracking-wider text-charcoal mb-3">
+                        Common Downstream Formats
+                      </h3>
+                      <ul className="space-y-2 text-xs text-charcoal">
+                        {app.examples.map((ex, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-forest shrink-0" />
+                            <span>{ex}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
                   <div className="pt-4 border-t border-cream">

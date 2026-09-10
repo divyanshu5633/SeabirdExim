@@ -23,7 +23,7 @@ export const faqsData: FAQItem[] = [
     id: 'faq-4',
     category: 'Purity',
     question: 'How does purity grade impact swell volume and appearance?',
-    answer: 'Higher purity grades (98% and 99%) undergo meticulous aspiration, pneumatic sorting, and mechanical cleaning, resulting in a significantly lighter ivory color, minimal dark specks, and a higher swell volume (often exceeding 55 ml/g). Lower grades (85% and 90%) retain more seed coat coloration and are suited for cost-sensitive or non-cosmetic applications.',
+    answer: 'Higher purity grades (98% and 99%) undergo meticulous aspiration, pneumatic sorting, and mechanical cleaning, resulting in a significantly lighter ivory color, minimal dark specks, and a higher swell volume (≥ 50 ml/g for 98% and ≥ 60 ml/g for 99%). Lower grades (85% and 90%) retain more seed coat coloration and are suited for cost-sensitive or non-cosmetic applications.',
   },
   {
     id: 'faq-5',
@@ -41,7 +41,7 @@ export const faqsData: FAQItem[] = [
     id: 'faq-7',
     category: 'Packaging',
     question: 'What export packaging options are standard?',
-    answer: 'Our export packaging options are Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag, and Private Labeled option for buyers wishing to commercialize under their own brand specifications.',
+    answer: 'Our export packaging options are 25 KG Export Bags, and Private Labeled option for buyers wishing to commercialize under their own brand specifications.',
   },
   {
     id: 'faq-8',
@@ -77,7 +77,7 @@ export const faqsData: FAQItem[] = [
     id: 'faq-13',
     category: 'Private Label',
     question: 'Can you support private-label branding and custom retail packaging?',
-    answer: 'Yes. We assist international brand owners with private-label contract sourcing. While Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag is our export standard, dedicated Private Labeled options can be coordinated depending on buyer artwork specifications, destination regulations, and minimum order commitments.',
+    answer: 'Yes. We assist international brand owners with private-label contract sourcing. While 25 KG Export Bags are our export standard, dedicated Private Labeled options can be coordinated depending on buyer artwork specifications, destination regulations, and minimum order commitments.',
   },
   {
     id: 'faq-14',

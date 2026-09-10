@@ -19,7 +19,7 @@ import { faqsData } from '@/data/faqsData';
 export const metadata: Metadata = {
   title: 'Psyllium Husk Exporter from India | Plantago Ovata Supply',
   description:
-    'Specification-focused Psyllium Husk (Plantago ovata) export from India. 85% to 99% purity grades for food, nutraceutical, and pharmaceutical formulations. Standard 25 KG export bags.',
+    'Specification-focused Psyllium Husk (Plantago ovata) export from India. 85% to 99% purity grades for food, nutraceutical, and pharmaceutical formulations. Standard 25 KG Export Bags.',
 };
 
 export default function PsylliumHuskPage() {
@@ -91,7 +91,7 @@ export default function PsylliumHuskPage() {
               </div>
               <div>
                 <span className="text-charcoal-muted uppercase text-[10px] font-bold block">Packaging</span>
-                <span className="font-semibold text-charcoal text-xs">25 KG Bag / Private Label</span>
+                <span className="font-semibold text-charcoal text-xs">25 KG Export Bags</span>
               </div>
               <div>
                 <span className="text-charcoal-muted uppercase text-[10px] font-bold block">Origin</span>
@@ -100,17 +100,19 @@ export default function PsylliumHuskPage() {
             </div>
           </div>
 
-          {/* Right Product Image */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30">
+          <div className="lg:col-span-5 relative group">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-xl bg-cream/30 shimmer-sweep">
               <Image
-                src="/images/psyllium_husk_hero.jpg"
-                alt="Psyllium Husk Whole Flakes (Plantago ovata) high purity botanical harvest"
+                src="/images/psyllium_cleaning_process.jpg"
+                alt="Psyllium Husk sortex aspiration and pneumatic cleaning line"
                 fill
                 priority
-                className="object-cover object-center"
+                className="object-cover object-center img-hover-zoom"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />
+              <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-forest text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm">
+                Cleaned Botanical Flakes
+              </div>
             </div>
             <div className="mt-3 text-center text-xs text-charcoal-muted italic">
               All visual representation reflects natural Plantago ovata botanical flakes.
@@ -193,18 +195,43 @@ export default function PsylliumHuskPage() {
 
         {/* Visual Comparison Showcase */}
         <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-8 lg:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20">
-              <Image
-                src="/images/psyllium_grades_comparison.jpg"
-                alt="Psyllium whole husk flakes, fine 100 mesh powder, and clear hydrated mucilage gel test"
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+          <div className="lg:col-span-6 space-y-3">
+            <div className="grid grid-cols-3 gap-3">
+              <div className="p-4 rounded-2xl bg-cream/40 border border-cream-dark text-center space-y-2 card-hover">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-forest text-ivory font-bold text-xs flex items-center justify-center shadow-xs">
+                  85–95%
+                </div>
+                <div className="font-editorial font-bold text-sm text-forest">Whole Husk</div>
+                <p className="text-[11px] text-charcoal-muted leading-tight">Coarse translucent flakes with natural fiber density</p>
+                <div className="text-[10px] font-semibold text-sage-dark bg-white/70 py-1 rounded-md">
+                  10–20 Mesh
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-cream/40 border border-cream-dark text-center space-y-2 card-hover">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-forest text-ivory font-bold text-xs flex items-center justify-center shadow-xs">
+                  98–99%
+                </div>
+                <div className="font-editorial font-bold text-sm text-forest">Fine Powder</div>
+                <p className="text-[11px] text-charcoal-muted leading-tight">Ultra-fine pulverized rapid-dispersion fiber</p>
+                <div className="text-[10px] font-semibold text-sage-dark bg-white/70 py-1 rounded-md">
+                  60–100 Mesh
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-forest text-ivory text-center space-y-2 card-hover shadow-sm">
+                <div className="w-10 h-10 mx-auto rounded-xl bg-gold text-forest-dark font-bold text-xs flex items-center justify-center shadow-xs">
+                  ≥ 60 ml/g
+                </div>
+                <div className="font-editorial font-bold text-sm text-ivory">Mucilage Gel</div>
+                <p className="text-[11px] text-cream/80 leading-tight">High-viscosity hydrophilic colloidal matrix</p>
+                <div className="text-[10px] font-semibold text-forest bg-gold-light py-1 rounded-md">
+                  Hydrated Matrix
+                </div>
+              </div>
             </div>
-            <div className="mt-2 text-center text-[11px] text-charcoal-muted italic">
-              Left: Whole Husk Flakes &bull; Center: Fine 100-Mesh Powder &bull; Right: Hydrated Mucilage Gel
+            <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark text-center text-[11px] text-charcoal-muted italic">
+              Physical State Profiles: Whole Husk Flakes &bull; Micro-Milled Powders &bull; Hydrated Gel
             </div>
           </div>
 
@@ -248,7 +275,7 @@ export default function PsylliumHuskPage() {
             <ul className="space-y-2 text-xs text-charcoal">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span><strong>Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag.</strong></span>
+                <span><strong>25 KG Export Bags:</strong> Seaworthy protective multi-barrier export packaging with internal moisture-barrier liners.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />

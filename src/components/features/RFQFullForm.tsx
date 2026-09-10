@@ -33,7 +33,7 @@ function RFQFormContent() {
     product: searchParams.get('product') || 'Psyllium Husk',
     purity: searchParams.get('purity') || '',
     quantity: searchParams.get('quantity') || '10 MT',
-    packaging: searchParams.get('packaging') || '25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag',
+    packaging: searchParams.get('packaging') || '25 KG Export Bags',
     destinationPort: '',
     application: searchParams.get('application') || 'Food & Beverage',
     message: searchParams.get('message') || '',
@@ -472,8 +472,8 @@ function RFQFormContent() {
                       onChange={handleChange}
                       className="w-full px-4 py-2.5 rounded-lg border border-cream-dark text-sm bg-white focus:border-forest focus:ring-1 focus:ring-forest"
                     >
-                      <option value="25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag">
-                        25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag
+                      <option value="25 KG Export Bags">
+                        25 KG Export Bags
                       </option>
                       <option value="Private Labeled Option">
                         Private Labeled Option

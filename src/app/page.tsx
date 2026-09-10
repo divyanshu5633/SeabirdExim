@@ -114,7 +114,7 @@ export default function HomePage() {
                     <PackageCheck className="w-3.5 h-3.5 text-sage-dark" />
                     <span>EXPORT READY</span>
                   </div>
-                  <div className="text-xs text-charcoal-muted">25 KG seaworthy bags</div>
+                  <div className="text-xs text-charcoal-muted">25 KG Export Bags</div>
                 </div>
 
                 <div className="space-y-1">
@@ -128,19 +128,22 @@ export default function HomePage() {
             </div>
 
             {/* Right Hero Visual: Botanical Psyllium macro photography */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden border border-cream-dark shadow-2xl bg-cream/30 aspect-[4/3] sm:aspect-[16/11]">
+            <div className="lg:col-span-5 relative group">
+              {/* Soft decorative ambient glow */}
+              <div className="absolute -inset-2 bg-gradient-to-r from-forest/20 via-gold/15 to-sage/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              <div className="relative rounded-3xl overflow-hidden border border-cream-dark shadow-2xl bg-cream/30 aspect-[4/3] sm:aspect-[16/11] shimmer-sweep animate-float-slow">
                 <Image
                   src="/images/psyllium_husk_hero.jpg"
                   alt="Pure natural Psyllium Husk flakes (Plantago ovata) with botanical seed spikes"
                   fill
                   priority
-                  className="object-cover object-center transform hover:scale-102 transition-transform duration-700"
+                  className="object-cover object-center img-hover-zoom animate-breathe"
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
 
                 {/* Floating Spec Highlight Tag */}
-                <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-cream-dark shadow-lg flex items-center justify-between animate-float">
+                <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-cream-dark shadow-lg flex items-center justify-between animate-float transition-transform duration-300 group-hover:translate-y-[-2px]">
                   <div>
                     <div className="text-[10px] uppercase font-bold tracking-wider text-sage-dark">
                       Featured Botanical Commodity
@@ -149,7 +152,7 @@ export default function HomePage() {
                       Psyllium Husk &bull; <span className="font-normal italic">Plantago ovata</span>
                     </div>
                   </div>
-                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-sage-light text-forest shadow-2xs">
+                  <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-sage-light text-forest shadow-2xs animate-pulse">
                     85% &ndash; 99% Purity
                   </span>
                 </div>
@@ -192,15 +195,19 @@ export default function HomePage() {
             </div>
 
             {/* Sourcing Harvest Field Image */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-md bg-white card-hover">
+            <div className="lg:col-span-5 relative group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-cream-dark shadow-md bg-white card-hover shimmer-sweep">
                 <Image
                   src="/images/psyllium_field_harvest.jpg"
                   alt="Authentic Plantago ovata psyllium harvest field in Gujarat India"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
+                <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-forest/80 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 animate-pulse-glow">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                  <span>Harvest Belts</span>
+                </div>
               </div>
               <div className="mt-2 text-center text-[11px] text-charcoal-muted italic">
                 Plantago ovata cultivation &amp; harvest belts &bull; Gujarat, India
@@ -220,7 +227,7 @@ export default function HomePage() {
 
         {/* Product Highlights & Purity Cards */}
         <div className="space-y-10">
-          <PurityGradeCards compact={false} />
+          <PurityGradeCards compact={true} />
 
           {/* Three Physical Forms Showcase Card */}
           <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-8 lg:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
@@ -245,20 +252,24 @@ export default function HomePage() {
                 </div>
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
                   <div className="text-[10px] uppercase font-bold text-sage-dark">Hydrated</div>
-                  <div className="font-bold text-xs text-forest mt-0.5">≥ 50 ml/g Gel</div>
+                  <div className="font-bold text-xs text-forest mt-0.5">≥ 60 ml/g Gel</div>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20">
+            <div className="lg:col-span-6 relative group">
+              <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20 shimmer-sweep">
                 <Image
                   src="/images/psyllium_grades_comparison.jpg"
                   alt="Psyllium whole husk flakes, 100 mesh powder, and hydrated soluble mucilage gel"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
+                <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-charcoal/80 backdrop-blur-md text-ivory text-[10px] font-semibold flex items-center gap-1.5 shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Physical Forms</span>
+                </div>
               </div>
               <div className="mt-2 text-center text-[11px] text-charcoal-muted italic">
                 Left: Whole Husk Flakes &bull; Center: Fine Milled Powder &bull; Right: Hydrated Mucilage
@@ -282,8 +293,8 @@ export default function HomePage() {
 
             <div className="space-y-1">
               <div className="text-[10px] uppercase font-bold tracking-wider text-charcoal-muted">Standard Packing</div>
-              <div className="font-editorial text-lg font-bold text-forest">25 KG Export Bags / Private Label</div>
-              <p className="text-xs text-charcoal-muted">Fresh paper bag + inner poly liner + safety lock + outer HDPE bag</p>
+              <div className="font-editorial text-lg font-bold text-forest">25 KG Export Bags</div>
+              <p className="text-xs text-charcoal-muted">Seaworthy export packaging with inner liner</p>
             </div>
 
             <div className="space-y-1">
@@ -384,15 +395,19 @@ export default function HomePage() {
             </div>
 
             {/* Right QA Lab Visual */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden border border-forest-soft aspect-[4/3] shadow-2xl">
+            <div className="lg:col-span-5 relative group">
+              <div className="relative rounded-2xl overflow-hidden border border-forest-soft aspect-[4/3] shadow-2xl shimmer-sweep animate-float-slow-reverse">
                 <Image
                   src="/images/psyllium_quality_lab.jpg"
                   alt="Analytical laboratory bench with psyllium husk swell volume and microbial test verification"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-forest/80 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 animate-pulse-glow">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                  <span>Lab Monograph QA</span>
+                </div>
               </div>
               <div className="mt-3 text-[11px] text-sage/70 italic text-center">
                 Documentation and laboratory analysis coordinated according to confirmed product and shipment.
@@ -414,33 +429,37 @@ export default function HomePage() {
         <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-8 lg:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
           <div className="lg:col-span-6 space-y-4">
             <span className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-sage-light text-forest border border-sage/40 inline-block">
-              Mechanical Processing &amp; Grading
+              Maritime Gateway &amp; Global Shipping
             </span>
             <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
-              Aspiration, De-Husking &amp; Sieving
+              Direct Seaport Dispatch via Mundra &amp; Kandla
             </h3>
             <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
-              Achieving consistent purity grades from 85% to 99% requires calibrated pneumatic aspiration, density separation, and multi-deck sifting. Our sourcing coordinates with processing mills operating stainless steel cleaning lines to remove botanical dust and seed fragments while protecting mucilaginous integrity.
+              Consignments in seaworthy 25 KG Export Bags are palletized, moisture-shielded with high-absorption container desiccants, and cleared through Western India&apos;s leading deepwater maritime terminals. We coordinate comprehensive bill of lading, phytosanitary clearance, and cargo tracking to destination ports worldwide.
             </p>
             <div className="flex flex-wrap gap-2 pt-1 text-[11px] text-charcoal font-semibold">
-              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">Pneumatic De-Stoning</span>
-              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">Aspiration Grading</span>
-              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">Magnetic Metal Separation</span>
+              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">FCL Container Stuffing</span>
+              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">Port Phytosanitary Inspection</span>
+              <span className="px-3 py-1 rounded-lg bg-cream/40 border border-cream-dark">Transoceanic Tracking</span>
             </div>
           </div>
 
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20">
+          <div className="lg:col-span-6 relative group">
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20 shimmer-sweep">
               <Image
-                src="/images/psyllium_cleaning_process.jpg"
-                alt="Modern stainless steel industrial psyllium aspiration and mechanical sifting processing plant"
+                src="/images/home_ocean_shipping.jpg"
+                alt="Container ship and deepwater gantry cranes at Mundra port loading export cargo"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center img-hover-zoom transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+              <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 animate-pulse-glow">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
+                <span>Ocean Freight Dispatch</span>
+              </div>
             </div>
             <div className="mt-2 text-center text-[11px] text-charcoal-muted italic">
-              Mechanical seed aspiration &amp; grading line &bull; Gujarat processing partner facility
+              Container vessel loading &bull; Western India seaport export gateway
             </div>
           </div>
         </div>

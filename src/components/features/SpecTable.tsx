@@ -33,6 +33,11 @@ export default function SpecTable() {
                   <div className="text-[11px] text-charcoal-muted max-w-[180px] truncate">
                     {spec.name}
                   </div>
+                  {spec.description && (
+                    <div className="text-[10px] text-forest/70 italic max-w-[200px] truncate">
+                      {spec.description}
+                    </div>
+                  )}
                 </td>
                 <td className="py-4 px-4 font-medium text-charcoal">
                   {spec.swellVolume}
@@ -72,9 +77,16 @@ export default function SpecTable() {
             className="bg-white rounded-xl border border-cream-dark p-4 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-cream pb-2">
-              <span className="font-editorial text-2xl font-bold text-forest">
-                {spec.grade}
-              </span>
+              <div>
+                <span className="font-editorial text-2xl font-bold text-forest">
+                  {spec.grade}
+                </span>
+                {spec.description && (
+                  <div className="text-[10px] text-forest/70 italic">
+                    {spec.description}
+                  </div>
+                )}
+              </div>
               <span className="text-xs text-charcoal-muted font-medium">Purity Grade</span>
             </div>
 
