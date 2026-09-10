@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display, Inter, Cinzel } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+  display: 'swap',
+});
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -18,7 +24,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: '#12372A',
+  themeColor: '#0A6684',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -68,6 +74,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://seabirdexim.com',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -80,7 +95,7 @@ export default function RootLayout({
       lang="en" 
       data-scroll-behavior="smooth" 
       suppressHydrationWarning
-      className={`${playfair.variable} ${inter.variable} scroll-smooth`}
+      className={`${cinzel.variable} ${playfair.variable} ${inter.variable} scroll-smooth`}
     >
       <body 
         suppressHydrationWarning 

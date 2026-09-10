@@ -24,16 +24,11 @@ export default function SpecTable() {
             {puritySpecsData.map((spec) => (
               <tr 
                 key={spec.grade} 
-                className={`hover:bg-cream/20 transition-colors ${spec.isPopular ? 'bg-sage-light/20' : ''}`}
+                className="hover:bg-cream/20 transition-colors"
               >
                 <td className="py-4 px-4">
-                  <div className="font-bold text-forest text-base flex items-center gap-1.5">
-                    <span>{spec.grade}</span>
-                    {spec.isPopular && (
-                      <span className="text-[9px] uppercase px-1.5 py-0.5 rounded bg-forest text-ivory font-semibold">
-                        Popular
-                      </span>
-                    )}
+                  <div className="font-bold text-forest text-base">
+                    {spec.grade}
                   </div>
                   <div className="text-[11px] text-charcoal-muted max-w-[180px] truncate">
                     {spec.name}
@@ -74,21 +69,12 @@ export default function SpecTable() {
         {puritySpecsData.map((spec) => (
           <div
             key={spec.grade}
-            className={`bg-white rounded-xl border p-4 space-y-3 ${
-              spec.isPopular ? 'border-forest ring-1 ring-forest/30' : 'border-cream-dark'
-            }`}
+            className="bg-white rounded-xl border border-cream-dark p-4 space-y-3"
           >
             <div className="flex items-center justify-between border-b border-cream pb-2">
-              <div className="flex items-center gap-2">
-                <span className="font-editorial text-2xl font-bold text-forest">
-                  {spec.grade}
-                </span>
-                {spec.isPopular && (
-                  <span className="text-[9px] uppercase px-2 py-0.5 rounded bg-forest text-ivory font-semibold">
-                    Popular
-                  </span>
-                )}
-              </div>
+              <span className="font-editorial text-2xl font-bold text-forest">
+                {spec.grade}
+              </span>
               <span className="text-xs text-charcoal-muted font-medium">Purity Grade</span>
             </div>
 

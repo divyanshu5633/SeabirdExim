@@ -1,31 +1,51 @@
 @import "tailwindcss";
 
 @theme {
-  --color-forest: #12372A;
-  --color-forest-dark: #0B241B;
-  --color-forest-light: #1D5441;
-  --color-forest-soft: #234E3E;
-  --color-sage: #8FAF91;
-  --color-sage-light: #E7EFE8;
-  --color-sage-dark: #6C8D6E;
-  --color-ivory: #F7F3EA;
-  --color-ivory-light: #FCFAF6;
-  --color-cream: #EFE9DC;
-  --color-cream-dark: #E2DAC9;
-  --color-charcoal: #1D2521;
-  --color-charcoal-light: #33403A;
-  --color-charcoal-muted: #596962;
-  --color-charcoal-faint: #8B9892;
-  --color-gold: #B59A5A;
-  --color-gold-light: #CBB47B;
-  --color-gold-hover: #9E8447;
-  --font-serif: var(--font-playfair), Georgia, serif;
+  /* Brand Primary: Maritime Ocean Teal (from official logo) */
+  --color-forest: #0A6684;
+  --color-forest-dark: #062733;
+  --color-forest-light: #0E84AA;
+  --color-forest-soft: #115268;
+
+  /* Explicit Ocean Aliases */
+  --color-ocean: #0A6684;
+  --color-ocean-dark: #062733;
+  --color-ocean-light: #0E84AA;
+  --color-ocean-soft: #115268;
+  --color-ocean-mist: #E8F2F6;
+
+  /* Coastal Slate & Sea Mist (replaces sage green) */
+  --color-sage: #6C98A9;
+  --color-sage-light: #E8F2F6;
+  --color-sage-dark: #477688;
+
+  /* Coastal Sand & Warm Ivory Backgrounds */
+  --color-ivory: #F9F7F2;
+  --color-ivory-light: #FCFBF8;
+  --color-cream: #F0EAE1;
+  --color-cream-dark: #E5DDD1;
+
+  /* Maritime Slate & Charcoal Typography */
+  --color-charcoal: #111E24;
+  --color-charcoal-light: #23343C;
+  --color-charcoal-muted: #4F6570;
+  --color-charcoal-faint: #8297A2;
+
+  /* Brand Secondary: Sand Gold (from official logo) */
+  --color-gold: #D2AC67;
+  --color-gold-light: #E5C78D;
+  --color-gold-hover: #B68E46;
+  --color-gold-soft: #FBF6EB;
+
+  /* Typography */
+  --font-serif: var(--font-cinzel), var(--font-playfair), Georgia, serif;
+  --font-editorial: var(--font-cinzel), var(--font-playfair), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
 :root {
-  --bg-main: #F7F3EA;
-  --text-main: #1D2521;
+  --bg-main: #F9F7F2;
+  --text-main: #111E24;
 }
 
 html {
@@ -48,6 +68,11 @@ body {
   font-family: var(--font-serif);
 }
 
+.font-brand {
+  font-family: var(--font-serif);
+  letter-spacing: 0.02em;
+}
+
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -55,32 +80,32 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #EFE9DC;
+  background: #F0EAE1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #8FAF91;
+  background: #6C98A9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #12372A;
+  background: #0A6684;
 }
 
 /* Grain texture overlay utility */
 .bg-grain {
-  background-image: radial-gradient(rgba(18, 55, 42, 0.04) 1px, transparent 0);
+  background-image: radial-gradient(rgba(10, 102, 132, 0.04) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
 .bg-dot-pattern {
-  background-image: radial-gradient(#8FAF91 1px, transparent 1px);
+  background-image: radial-gradient(#6C98A9 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Clean focus rings */
 *:focus-visible {
-  outline: 2px solid #12372A;
+  outline: 2px solid #0A6684;
   outline-offset: 2px;
 }
 
@@ -96,10 +121,10 @@ body {
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(18, 55, 42, 0.15);
+    box-shadow: 0 0 0 0 rgba(10, 102, 132, 0.18);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(18, 55, 42, 0);
+    box-shadow: 0 0 0 10px rgba(10, 102, 132, 0);
   }
 }
 
@@ -148,5 +173,5 @@ body {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px -10px rgba(18, 55, 42, 0.12);
+  box-shadow: 0 12px 24px -10px rgba(10, 102, 132, 0.15);
 }

@@ -5,12 +5,9 @@ import { Metadata } from 'next';
 import { 
   ArrowRight, 
   Leaf, 
-  ShieldCheck, 
   CheckCircle2, 
-  Layers, 
   FileCheck, 
-  Package, 
-  HelpCircle 
+  Package 
 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -94,7 +91,7 @@ export default function PsylliumHuskPage() {
               </div>
               <div>
                 <span className="text-charcoal-muted uppercase text-[10px] font-bold block">Packaging</span>
-                <span className="font-semibold text-charcoal">25 KG Export Bags</span>
+                <span className="font-semibold text-charcoal text-xs">25 KG Bag / Private Label</span>
               </div>
               <div>
                 <span className="text-charcoal-muted uppercase text-[10px] font-bold block">Origin</span>
@@ -251,15 +248,11 @@ export default function PsylliumHuskPage() {
             <ul className="space-y-2 text-xs text-charcoal">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span><strong>25 KG multi-wall kraft paper sacks</strong> or woven polypropylene outer protection.</span>
+                <span><strong>Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag.</strong></span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span><strong>Heavy-gauge polyethylene inner liner</strong> to seal against ambient ocean humidity.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span><strong>Palletization &amp; stretch-wrapping</strong> available upon request to facilitate automated warehousing.</span>
+                <span><strong>Private Labeled Option:</strong> Customized branding, labeling, and bulk export specifications aligned with buyer brand guidelines.</span>
               </li>
             </ul>
           </div>

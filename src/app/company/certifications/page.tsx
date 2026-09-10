@@ -5,7 +5,6 @@ import { Metadata } from 'next';
 import { 
   ShieldCheck, 
   FileCheck, 
-  CheckCircle2, 
   ArrowRight, 
   Microscope, 
   FileSpreadsheet, 

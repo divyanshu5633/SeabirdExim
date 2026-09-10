@@ -6,10 +6,6 @@ import {
   Package, 
   ArrowRight, 
   CheckCircle2, 
-  FileEdit, 
-  ShieldCheck, 
-  Truck, 
-  Sparkles, 
   AlertCircle 
 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';

@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { 
@@ -8,9 +7,7 @@ import {
   Calendar, 
   ArrowRight, 
   ArrowLeft, 
-  CheckCircle2, 
-  Share2, 
-  Sparkles 
+  CheckCircle2 
 } from 'lucide-react';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import { articlesData } from '@/data/articlesData';

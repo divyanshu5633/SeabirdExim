@@ -7,12 +7,11 @@ import {
   Globe2, 
   FileCheck2, 
   PackageCheck, 
-  CheckCircle2, 
-  Sparkles, 
   MessageSquare,
-  Layers,
   ChevronRight,
-  Clock
+  Truck,
+  Ship,
+  Plane
 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import RFQBuilder from '@/components/features/RFQBuilder';
@@ -20,7 +19,6 @@ import PurityGradeCards from '@/components/features/PurityGradeCards';
 import ExportTimeline from '@/components/features/ExportTimeline';
 import ApplicationTabs from '@/components/features/ApplicationTabs';
 import { companyData } from '@/data/companyData';
-import { puritySpecsData } from '@/data/productsData';
 
 export default function HomePage() {
   return (
@@ -43,14 +41,14 @@ export default function HomePage() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="font-editorial text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-forest leading-[1.12]">
+                <h1 className="font-editorial text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-forest leading-[1.15]">
                   Quality from India.
-                  <span className="block text-charcoal font-normal italic font-serif">
+                  <span className="block text-charcoal font-normal italic font-serif mt-1">
                     Built for Global Buyers.
                   </span>
                 </h1>
                 
-                <p className="text-base sm:text-lg text-charcoal-muted max-w-xl font-normal leading-relaxed">
+                <p className="text-sm sm:text-lg text-charcoal-muted max-w-xl font-normal leading-relaxed">
                   Specification-focused sourcing and export solutions for quality Indian commodities. Current primary focus: <span className="text-forest font-semibold">Psyllium Husk (Plantago ovata)</span> for international food, nutraceutical, and pharmaceutical formulations.
                 </p>
               </div>
@@ -72,6 +70,25 @@ export default function HomePage() {
                   <span>EXPLORE PSYLLIUM HUSK</span>
                   <ChevronRight className="w-4 h-4 text-sage-dark" />
                 </Link>
+              </div>
+
+              {/* Multi-modal Global Freight Strip (Road, Ocean, Air) */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 text-xs font-semibold text-charcoal-muted pt-1">
+                <span className="text-[10px] tracking-[0.18em] uppercase text-forest font-bold shrink-0">Worldwide Freight:</span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cream/70 text-forest text-xs font-medium">
+                    <Truck className="w-3.5 h-3.5 text-gold" />
+                    <span>Road Logistics</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cream/70 text-forest text-xs font-medium">
+                    <Ship className="w-3.5 h-3.5 text-gold" />
+                    <span>Ocean Cargo</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cream/70 text-forest text-xs font-medium">
+                    <Plane className="w-3.5 h-3.5 text-gold" />
+                    <span>Air Freight</span>
+                  </span>
+                </div>
               </div>
 
               {/* Trust Indicators Bar */}
@@ -265,8 +282,8 @@ export default function HomePage() {
 
             <div className="space-y-1">
               <div className="text-[10px] uppercase font-bold tracking-wider text-charcoal-muted">Standard Packing</div>
-              <div className="font-editorial text-lg font-bold text-forest">25 KG Export Bags</div>
-              <p className="text-xs text-charcoal-muted">Multi-wall kraft paper with poly liner</p>
+              <div className="font-editorial text-lg font-bold text-forest">25 KG Export Bags / Private Label</div>
+              <p className="text-xs text-charcoal-muted">Fresh paper bag + inner poly liner + safety lock + outer HDPE bag</p>
             </div>
 
             <div className="space-y-1">
@@ -519,16 +536,20 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Both Coordinators Cards */}
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto text-left">
+            {/* Direct Contacts */}
+            <div className="pt-2 text-center">
+              <span className="text-xs font-bold uppercase tracking-wider text-sage">Direct Contacts &amp; Export Desks</span>
+            </div>
+
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto text-left">
               {companyData.contacts.map((contact) => (
-                <div key={contact.phone} className="p-3 rounded-xl bg-forest-soft/70 border border-sage/30 text-xs space-y-1.5">
+                <div key={contact.phone} className="p-3.5 rounded-xl bg-forest-soft/70 border border-sage/30 text-xs space-y-1.5">
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-ivory">{contact.name}</span>
-                    <span className="text-[10px] text-sage">{contact.role}</span>
+                    <span className="font-bold text-ivory text-sm">{contact.name}</span>
+                    <span className="text-[10px] uppercase tracking-wider text-gold font-semibold">Export Desk</span>
                   </div>
                   <div className="flex items-center justify-between pt-0.5">
-                    <a href={`tel:${contact.phone}`} className="font-semibold text-sage-light hover:text-white transition-colors">
+                    <a href={`tel:${contact.phone}`} className="font-semibold text-sage-light hover:text-white transition-colors whitespace-nowrap">
                       {contact.phoneDisplay}
                     </a>
                     <a
@@ -545,13 +566,13 @@ export default function HomePage() {
               ))}
             </div>
 
-            {/* All Three Updated Emails */}
+            {/* Official Emails & Location */}
             <div className="pt-4 text-xs text-sage/80 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-              <span>Sales: <a href={`mailto:${companyData.salesEmail}`} className="text-ivory hover:underline">{companyData.salesEmail}</a></span>
+              <span>Sales: <a href={`mailto:${companyData.salesEmail}`} className="text-ivory hover:underline font-medium">{companyData.salesEmail}</a></span>
               <span>&bull;</span>
-              <span>Admin: <a href={`mailto:${companyData.adminEmail}`} className="text-ivory hover:underline">{companyData.adminEmail}</a></span>
+              <span>Info: <a href={`mailto:${companyData.infoEmail}`} className="text-ivory hover:underline font-medium">{companyData.infoEmail}</a></span>
               <span>&bull;</span>
-              <span>Info: <a href={`mailto:${companyData.infoEmail}`} className="text-ivory hover:underline">{companyData.infoEmail}</a></span>
+              <span>Location: <span className="text-ivory font-medium">Surat, Gujarat, INDIA.</span></span>
             </div>
           </div>
         </div>

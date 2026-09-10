@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   Menu, 
@@ -10,7 +11,6 @@ import {
   ArrowRight, 
   PhoneCall, 
   Phone,
-  Mail,
   MessageSquare, 
   ShieldCheck, 
   Leaf, 
@@ -41,26 +41,30 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setActiveDropdown(null);
-  }, [pathname]);
+  const openTimeRef = React.useRef(0);
 
-  // Lock background scroll when mobile drawer is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    } else {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
+  const toggleMobileMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setMobileMenuOpen((prev) => {
+      const nextState = !prev;
+      if (nextState) {
+        openTimeRef.current = Date.now();
+      }
+      return nextState;
+    });
+  };
+
+  const closeMobileMenu = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
     }
-    return () => {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    };
-  }, [mobileMenuOpen]);
+    // Prevent immediate close if synthetic touch/click arrives within 350ms of opening
+    if (Date.now() - openTimeRef.current < 350) {
+      return;
+    }
+    setMobileMenuOpen(false);
+  };
+
 
   const toggleDropdown = (name: string) => {
     setActiveDropdown(activeDropdown === name ? null : name);
@@ -78,18 +82,15 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
-            <Link href="/" className="group flex items-center gap-3 z-10">
-              <div className="w-10 h-10 rounded-lg bg-forest text-ivory flex items-center justify-center font-editorial text-xl font-bold tracking-wider shadow-sm group-hover:bg-forest-dark transition-colors">
-                S
-              </div>
-              <div className="flex flex-col">
-                <span className="font-editorial text-xl md:text-2xl font-bold tracking-tight text-forest group-hover:text-forest-dark transition-colors">
-                  SEABIRD EXIM
-                </span>
-                <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal-muted font-medium">
-                  Import &amp; Export &bull; India
-                </span>
-              </div>
+            <Link href="/" className="group flex items-center gap-3 z-10" aria-label="Seabird EXIM Home">
+              <Image 
+                src="/images/logo-horizontal.svg" 
+                alt="Seabird EXIM" 
+                width={220} 
+                height={38} 
+                priority 
+                className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]" 
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -333,22 +334,22 @@ export default function Header() {
                 {contactDropdownOpen && (
                   <div className="absolute right-0 top-full mt-1 w-80 bg-white rounded-xl border border-cream-dark shadow-xl p-3.5 space-y-3 z-50">
                     <div className="flex items-center justify-between border-b border-cream pb-2">
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-forest">Export Desk Coordinators</span>
-                      <span className="text-[10px] text-sage-dark font-medium">Surat, Gujarat</span>
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-forest">Direct Contacts &amp; Export Desk</span>
+                      <span className="text-[10px] text-sage-dark font-medium">Surat, Gujarat, India</span>
                     </div>
 
-                    {/* Both Coordinators Listed */}
+                    {/* Both Contacts Listed */}
                     <div className="space-y-2">
                       {companyData.contacts.map((contact) => (
                         <div key={contact.phone} className="p-2.5 rounded-lg bg-cream/30 border border-cream-dark space-y-1">
                           <div className="flex items-center justify-between">
                             <span className="font-bold text-xs text-charcoal">{contact.name}</span>
-                            <span className="text-[10px] text-charcoal-muted">{contact.role}</span>
+                            <span className="text-[10px] text-sage-dark font-medium">Export Desk</span>
                           </div>
                           <div className="flex items-center justify-between text-xs pt-1">
-                            <a href={`tel:${contact.phone}`} className="font-semibold text-forest hover:underline flex items-center gap-1">
-                              <Phone className="w-3 h-3 text-sage" />
-                              <span>{contact.phoneDisplay}</span>
+                            <a href={`tel:${contact.phone}`} className="font-semibold text-forest hover:underline flex items-center gap-1 whitespace-nowrap">
+                              <Phone className="w-3 h-3 text-sage shrink-0" />
+                              <span className="whitespace-nowrap">{contact.phoneDisplay}</span>
                             </a>
                             <a
                               href={contact.whatsappUrl}
@@ -405,7 +406,7 @@ export default function Header() {
               <Link 
                 href="/contact"
                 aria-label="Surat Export Desk Contacts"
-                className="p-2.5 rounded-lg bg-white border border-cream-dark text-forest flex items-center justify-center shadow-xs"
+                className="w-10 h-10 rounded-lg bg-white border border-cream-dark text-forest flex items-center justify-center shadow-xs"
                 title="Surat Export Desk Contacts"
               >
                 <PhoneCall className="w-4 h-4 text-forest" />
@@ -414,19 +415,15 @@ export default function Header() {
               <button 
                 type="button"
                 id="mobile-nav-toggle-button"
-                aria-label="Open Navigation Menu"
+                aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={mobileMenuOpen}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setMobileMenuOpen((prev) => !prev);
-                }}
-                className="p-2.5 rounded-lg bg-white border border-cream-dark text-forest hover:bg-cream/60 active:scale-95 transition-transform flex items-center justify-center cursor-pointer shadow-xs touch-manipulation"
+                onClick={toggleMobileMenu}
+                className="w-11 h-11 rounded-lg bg-white border border-cream-dark text-forest hover:bg-cream/60 active:scale-95 transition-transform flex items-center justify-center cursor-pointer shadow-xs touch-manipulation"
               >
                 {mobileMenuOpen ? (
-                  <X className="w-5 h-5 text-forest pointer-events-none" />
+                  <X className="w-5 h-5 text-forest" />
                 ) : (
-                  <Menu className="w-5 h-5 text-forest pointer-events-none" />
+                  <Menu className="w-5 h-5 text-forest" />
                 )}
               </button>
             </div>
@@ -435,282 +432,270 @@ export default function Header() {
       </header>
 
       {/* 
-        Modern Mobile Slide-out Drawer & Overlay 
-        Uses fixed z-[999] with persistent rendering and smooth CSS translation so it NEVER fails on touch
+        Modern Mobile Slide-out Drawer & Overlay
       */}
-      <div 
-        className={`fixed inset-0 z-[999] lg:hidden transition-all duration-300 ${
-          mobileMenuOpen ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none'
-        }`}
-        aria-hidden={!mobileMenuOpen}
-      >
-        {/* Darkened backdrop */}
+      {mobileMenuOpen && (
         <div 
-          className="absolute inset-0 bg-charcoal/60 backdrop-blur-xs transition-opacity duration-300"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setMobileMenuOpen(false);
-          }}
-        />
-
-        {/* Slide-out Panel */}
-        <div 
-          className={`absolute top-0 right-0 bottom-0 w-[320px] max-w-[85vw] h-full bg-ivory shadow-2xl flex flex-col justify-between z-10 transition-transform duration-300 ease-out border-l border-cream-dark ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
-          onClick={(e) => e.stopPropagation()}
+          className="fixed inset-0 z-[100] lg:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation Menu"
         >
-          {/* Top Bar inside Drawer */}
-          <div className="flex-1 overflow-y-auto">
-            <div className="p-4 border-b border-cream flex items-center justify-between bg-white sticky top-0 z-20">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-md bg-forest text-ivory flex items-center justify-center font-editorial font-bold text-base">
-                  S
-                </div>
-                <div>
-                  <span className="font-editorial text-base font-bold text-forest">
-                    SEABIRD EXIM
-                  </span>
-                  <div className="text-[9px] uppercase tracking-wider text-charcoal-muted">
-                    Surat &bull; Gujarat &bull; India
-                  </div>
-                </div>
-              </div>
+          {/* Darkened backdrop */}
+          <div 
+            className="fixed inset-0 bg-charcoal/60 backdrop-blur-sm transition-opacity"
+            onClick={closeMobileMenu}
+          />
+
+          {/* Slide-out Panel */}
+          <div 
+            className="fixed top-0 right-0 bottom-0 w-[320px] max-w-[85vw] h-full bg-ivory shadow-2xl flex flex-col z-10 border-l border-cream-dark overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Bar inside Drawer */}
+            <div className="p-4 border-b border-cream flex items-center justify-between bg-white shrink-0">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+                <Image 
+                  src="/images/logo-horizontal.svg" 
+                  alt="Seabird EXIM" 
+                  width={180} 
+                  height={32} 
+                  className="h-7 sm:h-8 w-auto object-contain" 
+                />
+              </Link>
 
               <button
                 type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2 rounded-lg bg-cream/50 text-charcoal hover:bg-cream active:scale-95 transition-transform cursor-pointer touch-manipulation"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-9 h-9 rounded-lg bg-cream/50 text-charcoal hover:bg-cream active:scale-95 transition-transform flex items-center justify-center cursor-pointer"
                 aria-label="Close menu"
               >
-                <X className="w-5 h-5 text-forest pointer-events-none" />
+                <X className="w-5 h-5 text-forest" />
               </button>
             </div>
 
-            {/* Navigation Links */}
-            <div className="p-4 space-y-1 text-sm">
-              <Link
-                href="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
-              >
-                Home
-              </Link>
-
-              {/* Products Accordion */}
-              <div className="border-t border-cream/60 pt-1">
-                <button
-                  type="button"
-                  onClick={() => toggleDropdown('mobile-products')}
-                  className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
-                >
-                  <span>Products</span>
-                  <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-products' ? 'rotate-180' : ''}`} />
-                </button>
-
-                {activeDropdown === 'mobile-products' && (
-                  <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
-                    <Link
-                      href="/products/psyllium-husk"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-forest hover:underline"
-                    >
-                      Psyllium Husk (85% &ndash; 99%)
-                    </Link>
-                    <Link
-                      href="/products/organic-psyllium-husk"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Organic Psyllium Husk
-                    </Link>
-                    <Link
-                      href="/products/private-label"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Private Label Solutions
-                    </Link>
-                    <Link
-                      href="/products"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-bold text-forest hover:underline pt-1 border-t border-cream"
-                    >
-                      All Products Catalog &rarr;
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Applications Link */}
-              <div className="border-t border-cream/60 pt-1">
+            {/* Scrollable Drawer Content */}
+            <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4 text-sm">
+              {/* Navigation Links */}
+              <div className="space-y-1">
                 <Link
-                  href="/applications"
+                  href="/"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
                 >
-                  Applications
+                  Home
                 </Link>
+
+                {/* Products Accordion */}
+                <div className="border-t border-cream/60 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleDropdown('mobile-products')}
+                    className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
+                  >
+                    <span>Products</span>
+                    <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-products' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {activeDropdown === 'mobile-products' && (
+                    <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
+                      <Link
+                        href="/products/psyllium-husk"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-forest hover:underline"
+                      >
+                        Psyllium Husk (85% &ndash; 99%)
+                      </Link>
+                      <Link
+                        href="/products/organic-psyllium-husk"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Organic Psyllium Husk
+                      </Link>
+                      <Link
+                        href="/products/private-label"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Private Label Solutions
+                      </Link>
+                      <Link
+                        href="/products"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-bold text-forest hover:underline pt-1 border-t border-cream"
+                      >
+                        All Products Catalog &rarr;
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Applications Link */}
+                <div className="border-t border-cream/60 pt-1">
+                  <Link
+                    href="/applications"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
+                  >
+                    Applications
+                  </Link>
+                </div>
+
+                {/* Company Accordion */}
+                <div className="border-t border-cream/60 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleDropdown('mobile-company')}
+                    className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
+                  >
+                    <span>Company</span>
+                    <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-company' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {activeDropdown === 'mobile-company' && (
+                    <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
+                      <Link
+                        href="/company"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        About Seabird EXIM
+                      </Link>
+                      <Link
+                        href="/company/certifications"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Quality &amp; Certifications
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Insights Accordion */}
+                <div className="border-t border-cream/60 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => toggleDropdown('mobile-insights')}
+                    className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
+                  >
+                    <span>Insights</span>
+                    <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-insights' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {activeDropdown === 'mobile-insights' && (
+                    <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
+                      <Link
+                        href="/insights"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Insights Hub
+                      </Link>
+                      <Link
+                        href="/insights/blog"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Technical Blog &amp; Guides
+                      </Link>
+                      <Link
+                        href="/insights/faq"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 font-medium text-charcoal hover:text-forest"
+                      >
+                        Buyer FAQ
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
+                {/* Contact Link */}
+                <div className="border-t border-cream/60 pt-1">
+                  <Link
+                    href="/contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
+                  >
+                    Contact &amp; RFQ
+                  </Link>
+                </div>
               </div>
 
-              {/* Company Accordion */}
-              <div className="border-t border-cream/60 pt-1">
-                <button
-                  type="button"
-                  onClick={() => toggleDropdown('mobile-company')}
-                  className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
-                >
-                  <span>Company</span>
-                  <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-company' ? 'rotate-180' : ''}`} />
-                </button>
+              {/* Direct Contacts & Export Desk */}
+              <div className="pt-3 border-t border-cream space-y-3">
+                <div className="flex items-center justify-between pb-1 border-b border-cream">
+                  <span className="text-xs font-bold uppercase tracking-wider text-forest">Direct Contacts &amp; Export Desk</span>
+                  <span className="text-[10px] text-sage-dark font-medium">Surat, India</span>
+                </div>
 
-                {activeDropdown === 'mobile-company' && (
-                  <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
-                    <Link
-                      href="/company"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      About Seabird EXIM
-                    </Link>
-                    <Link
-                      href="/company/certifications"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Quality &amp; Certifications
-                    </Link>
-                  </div>
-                )}
-              </div>
+                {/* Both Contacts with Names & Numbers */}
+                <div className="space-y-2">
+                  {companyData.contacts.map((contact) => (
+                    <div key={contact.phone} className="p-2.5 rounded-xl bg-white border border-cream-dark shadow-xs space-y-1.5">
+                      <div className="flex items-center justify-between">
+                        <span className="font-bold text-xs text-charcoal">{contact.name}</span>
+                        <span className="text-[10px] text-sage-dark font-medium">Export Desk</span>
+                      </div>
+                      <div className="flex items-center gap-2 pt-0.5">
+                        <a
+                          href={`tel:${contact.phone}`}
+                          className="flex-1 min-h-[38px] flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-cream/50 text-forest text-xs font-semibold hover:bg-cream transition-colors whitespace-nowrap"
+                        >
+                          <Phone className="w-3 h-3 text-forest shrink-0" />
+                          <span className="whitespace-nowrap">{contact.phoneDisplay}</span>
+                        </a>
+                        <a
+                          href={contact.whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="min-h-[38px] p-2 rounded-lg bg-sage-light text-forest hover:bg-sage transition-colors flex items-center justify-center"
+                          title={`WhatsApp ${contact.name}`}
+                        >
+                          <MessageSquare className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
-              {/* Insights Accordion */}
-              <div className="border-t border-cream/60 pt-1">
-                <button
-                  type="button"
-                  onClick={() => toggleDropdown('mobile-insights')}
-                  className="w-full flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 cursor-pointer touch-manipulation"
-                >
-                  <span>Insights</span>
-                  <ChevronDown className={`w-4 h-4 text-forest transition-transform ${activeDropdown === 'mobile-insights' ? 'rotate-180' : ''}`} />
-                </button>
-
-                {activeDropdown === 'mobile-insights' && (
-                  <div className="pl-4 pr-2 py-1 space-y-1 bg-cream/30 rounded-lg my-1 text-xs">
-                    <Link
-                      href="/insights"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Insights Hub
-                    </Link>
-                    <Link
-                      href="/insights/blog"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Technical Blog &amp; Guides
-                    </Link>
-                    <Link
-                      href="/insights/faq"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1.5 font-medium text-charcoal hover:text-forest"
-                    >
-                      Buyer FAQ
-                    </Link>
-                  </div>
-                )}
-              </div>
-
-              {/* Contact Link */}
-              <div className="border-t border-cream/60 pt-1">
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
-                >
-                  Contact &amp; RFQ
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Drawer Actions - Surat Export Desk */}
-          <div className="p-4 border-t border-cream bg-cream/20 space-y-3">
-            <div className="flex items-center justify-between pb-1 border-b border-cream">
-              <span className="text-xs font-bold uppercase tracking-wider text-forest">Surat Export Desk</span>
-              <span className="text-[10px] text-sage-dark font-medium">Gujarat, India</span>
-            </div>
-
-            {/* Both Coordinators with Names & Numbers */}
-            <div className="space-y-2">
-              {companyData.contacts.map((contact) => (
-                <div key={contact.phone} className="p-2.5 rounded-xl bg-white border border-cream-dark shadow-xs space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-xs text-charcoal">{contact.name}</span>
-                    <span className="text-[10px] text-charcoal-muted">{contact.role}</span>
-                  </div>
-                  <div className="flex items-center gap-2 pt-0.5">
-                    <a
-                      href={`tel:${contact.phone}`}
-                      className="flex-1 flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-lg bg-cream/50 text-forest text-xs font-semibold hover:bg-cream transition-colors"
-                    >
-                      <Phone className="w-3 h-3 text-forest" />
-                      <span>{contact.phoneDisplay}</span>
+                {/* Official Emails */}
+                <div className="p-2.5 rounded-xl bg-white border border-cream-dark text-[11px] space-y-1">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-charcoal-muted">Official Emails:</div>
+                  <div className="flex items-center justify-between text-charcoal">
+                    <span className="text-charcoal-muted">Sales:</span>
+                    <a href={`mailto:${companyData.salesEmail}`} className="font-medium hover:text-forest">
+                      {companyData.salesEmail}
                     </a>
-                    <a
-                      href={contact.whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded-lg bg-sage-light text-forest hover:bg-sage transition-colors"
-                      title={`WhatsApp ${contact.name}`}
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
+                  </div>
+                  <div className="flex items-center justify-between text-charcoal">
+                    <span className="text-charcoal-muted">Admin:</span>
+                    <a href={`mailto:${companyData.adminEmail}`} className="font-medium hover:text-forest">
+                      {companyData.adminEmail}
+                    </a>
+                  </div>
+                  <div className="flex items-center justify-between text-charcoal">
+                    <span className="text-charcoal-muted">Info:</span>
+                    <a href={`mailto:${companyData.infoEmail}`} className="font-medium hover:text-forest">
+                      {companyData.infoEmail}
                     </a>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            {/* Official Emails */}
-            <div className="p-2.5 rounded-xl bg-white border border-cream-dark text-[11px] space-y-1">
-              <div className="text-[10px] font-bold uppercase tracking-wider text-charcoal-muted">Official Emails:</div>
-              <div className="flex items-center justify-between text-charcoal">
-                <span className="text-charcoal-muted">Sales:</span>
-                <a href={`mailto:${companyData.salesEmail}`} className="font-medium hover:text-forest">
-                  {companyData.salesEmail}
-                </a>
-              </div>
-              <div className="flex items-center justify-between text-charcoal">
-                <span className="text-charcoal-muted">Admin:</span>
-                <a href={`mailto:${companyData.adminEmail}`} className="font-medium hover:text-forest">
-                  {companyData.adminEmail}
-                </a>
-              </div>
-              <div className="flex items-center justify-between text-charcoal">
-                <span className="text-charcoal-muted">Info:</span>
-                <a href={`mailto:${companyData.infoEmail}`} className="font-medium hover:text-forest">
-                  {companyData.infoEmail}
-                </a>
+                <Link
+                  href="/contact#rfq"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full min-h-[44px] flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark transition-colors shadow-sm"
+                >
+                  <span>REQUEST A QUOTE</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
-
-            <Link
-              href="/contact#rfq"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark transition-colors shadow-sm"
-            >
-              <span>REQUEST A QUOTE</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

@@ -5,14 +5,10 @@ import { Metadata } from 'next';
 import { 
   Building2, 
   MapPin, 
-  Globe2, 
-  CheckCircle2, 
   ArrowRight, 
-  ShieldCheck, 
   Phone, 
   Mail, 
-  MessageSquare,
-  Users
+  MessageSquare
 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -148,7 +144,7 @@ export default function CompanyPage() {
                 />
               </div>
               <div className="text-[11px] text-charcoal-muted italic">
-                Export Infrastructure: Palletized 25 KG multi-wall export bags ready for seaport dispatch
+                Export Infrastructure: 25 KG net fresh paper bags with inner poly liner, safety liner lock & outer HDPE bag ready for seaport dispatch
               </div>
             </div>
           </div>
@@ -170,9 +166,9 @@ export default function CompanyPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-cream/40 rounded-3xl border border-cream-dark p-8 sm:p-12 space-y-8">
           <SectionHeader
-            eyebrow="Direct Trade Contacts"
+            eyebrow="Direct Trade Operations &amp; Export Desk"
             title="Speak Directly With Our Export Team"
-            description="No automated call centers. Get direct, transparent answers from our Surat export operations desk."
+            description="No automated call centers. Connect directly with Divyanshu Patel and Neel Patel at our Surat export operations desk."
             align="left"
           />
 
@@ -191,7 +187,7 @@ export default function CompanyPage() {
                       {contact.name}
                     </h3>
                     <div className="text-xs text-charcoal-muted font-medium">
-                      {contact.role} &bull; Seabird EXIM
+                      Seabird EXIM &bull; Surat, India
                     </div>
                   </div>
                 </div>
@@ -199,13 +195,13 @@ export default function CompanyPage() {
                 <div className="pt-2 space-y-2 text-xs">
                   <div className="flex items-center justify-between py-1.5 border-b border-cream">
                     <span className="text-charcoal-muted">Direct Phone:</span>
-                    <a href={`tel:${contact.phone}`} className="font-semibold text-charcoal hover:text-forest">
+                    <a href={`tel:${contact.phone}`} className="font-semibold text-charcoal hover:text-forest whitespace-nowrap">
                       {contact.phoneDisplay}
                     </a>
                   </div>
                   <div className="flex items-center justify-between py-1.5 border-b border-cream">
                     <span className="text-charcoal-muted">Location:</span>
-                    <span className="font-medium text-charcoal">Surat, Gujarat, India</span>
+                    <span className="font-medium text-charcoal">Surat, Gujarat, INDIA.</span>
                   </div>
                 </div>
 
@@ -217,7 +213,7 @@ export default function CompanyPage() {
                     className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark transition-colors"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>Chat on WhatsApp</span>
+                    <span>Chat with {contact.name}</span>
                   </a>
                   <a
                     href={`tel:${contact.phone}`}

@@ -41,7 +41,7 @@ export const faqsData: FAQItem[] = [
     id: 'faq-7',
     category: 'Packaging',
     question: 'What export packaging options are standard?',
-    answer: 'Our standard export packaging is 25 KG multi-wall kraft paper or woven polypropylene export bags equipped with an internal polyethylene liner to protect against ambient moisture and transit contamination. Custom palletization with shrink wrapping and slip-sheets can be arranged according to buyer port specifications.',
+    answer: 'Our export packaging options are Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag, and Private Labeled option for buyers wishing to commercialize under their own brand specifications.',
   },
   {
     id: 'faq-8',
@@ -77,7 +77,7 @@ export const faqsData: FAQItem[] = [
     id: 'faq-13',
     category: 'Private Label',
     question: 'Can you support private-label branding and custom retail packaging?',
-    answer: 'Yes. We assist international brand owners with private-label contract sourcing. While bulk 25 KG bags with customized export markings are our standard, custom branded institutional bags or coordinated retail packaging workflows can be evaluated depending on supplier parameters, artwork readiness, destination regulations, and minimum order commitments.',
+    answer: 'Yes. We assist international brand owners with private-label contract sourcing. While Packing: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag is our export standard, dedicated Private Labeled options can be coordinated depending on buyer artwork specifications, destination regulations, and minimum order commitments.',
   },
   {
     id: 'faq-14',
@@ -89,6 +89,6 @@ export const faqsData: FAQItem[] = [
     id: 'faq-15',
     category: 'Export & Logistics',
     question: 'How do I submit an RFQ to receive an official quotation?',
-    answer: 'You can submit your requirements through our online RFQ form on this website, email our export desk directly, or connect with our trade coordinators on WhatsApp. Please specify the target grade (e.g., 95% or 99%), required quantity (MT), packaging preference, and destination port to receive a prompt, specification-aligned quotation.',
+    answer: 'You can submit your requirements through our online RFQ form on this website, email our export desk directly (sales@seabirdexim.com), or connect directly with Divyanshu Patel and Neel Patel on WhatsApp. Please specify the target grade (e.g., 95% or 99%), required quantity (MT), packaging preference, and destination port to receive a prompt, specification-aligned quotation.',
   },
 ];

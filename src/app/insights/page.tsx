@@ -6,7 +6,6 @@ import {
   HelpCircle, 
   FileText, 
   ArrowRight, 
-  CheckCircle2, 
   Calendar, 
   Clock 
 } from 'lucide-react';

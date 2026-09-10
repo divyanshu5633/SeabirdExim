@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { ArrowRight, Leaf, ShieldCheck, Package, CheckCircle2, ChevronRight } from 'lucide-react';
+import { ArrowRight, Leaf, ShieldCheck, Package, CheckCircle2 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import { productsCatalog } from '@/data/productsData';
@@ -29,7 +29,7 @@ export default function ProductsPage() {
 
         {/* Scalable Catalog Grid */}
         <div className="space-y-12 pt-4">
-          {productsCatalog.map((product, idx) => {
+          {productsCatalog.map((product) => {
             const isFlagship = product.id === 'psyllium-husk';
             const isOrganic = product.id === 'organic-psyllium-husk';
 

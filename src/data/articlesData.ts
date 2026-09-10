@@ -26,7 +26,7 @@ export const articlesData: ArticleItem[] = [
             '95% Grade: The global standard workhorse. Widely specified by gluten-free industrial bakeries, standard food formulations, and mid-tier dietary fiber brands due to its robust balance of swell volume (typically ≥ 45–50 ml/g) and commercial value.',
             '98% to 99% Grades: The gold standard for pharmaceutical preparations, effervescent fiber drink mixes, and clean-label dietary capsules. These grades provide pristine light ivory appearance and minimal sediment when hydrated.',
           ],
-          keyTakeaway: 'For pharmaceutical and beverage mixes, 98%–99% is recommended. For bakery and bulk dietary fiber, 95% is the global industry benchmark.',
+          keyTakeaway: 'For pharmaceutical and beverage mixes, 98%–99% is recommended. For bakery and bulk dietary fiber, 95% is commonly specified.',
         },
         {
           heading: 'Key Verification Questions to Ask Your Sourcing Partner',
@@ -68,7 +68,7 @@ export const articlesData: ArticleItem[] = [
         {
           heading: 'Storage and Handling Considerations',
           paragraphs: [
-            'Because powdered husk possesses significantly greater surface area, it is noticeably more hygroscopic than whole husk. Bags must remain hermetically sealed within multi-wall poly-lined export sacks until actual processing begins.',
+            'Because powdered husk possesses significantly greater surface area, it is noticeably more hygroscopic than whole husk. Bags must remain hermetically sealed within fresh paper bags with inner poly liner and outer HDPE protection until actual processing begins.',
           ],
         },
       ],
@@ -96,7 +96,7 @@ export const articlesData: ArticleItem[] = [
         {
           heading: '2. Seaworthy Packaging Integrity',
           paragraphs: [
-            'Ocean transit exposes containers to dramatic humidity and temperature shifts. Standard export bags must feature multi-wall kraft paper or woven polypropylene outer protection paired with a virgin polyethylene inner heat-sealed or tied liner.',
+            'Ocean transit exposes containers to dramatic humidity and temperature shifts. Export bags must feature fresh paper bags with an inner poly liner with safety liner lock and extra outer HDPE bag protection.',
             'Ask whether container desiccants will be installed to prevent container sweat and mold formation during long sea voyages.',
           ],
         },
@@ -117,7 +117,7 @@ export const articlesData: ArticleItem[] = [
     date: '2026-06-22',
     category: 'Technical Specifications',
     readingTime: '5 min read',
-    summary: 'Demystifying the lab parameters found on a typical Psyllium Certificate of Analysis so your quality assurance team can set realistic purchase benchmarks.',
+    summary: 'Demystifying the lab parameters found on a typical Psyllium Certificate of Analysis so your quality assurance team can set realistic purchase criteria.',
     content: {
       intro: 'Reviewing a Certificate of Analysis for Psyllium Husk involves evaluating a set of unique physical and chemical indicators. Understanding these metrics empowers buyers to verify quality with confidence.',
       sections: [
@@ -155,16 +155,16 @@ export const articlesData: ArticleItem[] = [
       intro: 'Because Psyllium Husk absorbs up to 50 times its weight in water, improper packing during maritime ocean transit can compromise an entire container. Here is how export-ready packing safeguards your cargo.',
       sections: [
         {
-          heading: 'The 25 KG Multi-Wall Export Bag Standard',
+          heading: '25 KG Fresh Paper Bag with Inner Poly Liner, Safety Liner Lock & Outer HDPE Bag',
           paragraphs: [
-            'Seabird EXIM adopts the international gold standard: 25 KG multi-ply kraft paper sacks or woven polypropylene outer bags fitted with a durable food-grade polyethylene interior liner.',
-            'This double-barrier barrier shields the product from atmospheric ambient moisture, odor transfer, and physical puncture.',
+            'Seabird EXIM adopts a premium packaging standard: 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag.',
+            'This advanced multi-barrier system shields the botanical fiber from atmospheric moisture, ocean humidity, odor transfer, and transit stress.',
           ],
         },
         {
-          heading: 'Palletization & Container Loading',
+          heading: 'Private Labeled Packaging Options',
           paragraphs: [
-            'Bags can be loaded loose into 20-foot and 40-foot containers to maximize freight volume, or systematically stacked on heat-treated ISPM-15 compliant wooden/plastic pallets with stretch film wrap and corner guards for rapid automated forklift offloading.',
+            'For brand owners, retail chains, and international distributors, Seabird EXIM coordinates dedicated Private Labeled packaging with customized branding, labeling, and buyer-specific batch marking.',
           ],
         },
       ],

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { MapPin, Phone, Mail, Clock, MessageSquare, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Clock, MessageSquare, ShieldCheck } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
 import RFQFullForm from '@/components/features/RFQFullForm';
@@ -85,19 +85,18 @@ export default function ContactPage() {
             {/* Coordinators Column */}
             <div className="lg:col-span-7 space-y-4">
               <h4 className="text-xs font-bold uppercase tracking-wider text-forest">
-                Direct Export Trade Coordinators
+                Direct Contacts &amp; Export Desks
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {companyData.contacts.map((contact) => (
                   <div key={contact.phone} className="p-4 rounded-2xl bg-white border border-cream-dark shadow-xs space-y-2.5">
                     <div>
                       <div className="font-bold text-sm text-forest">{contact.name}</div>
-                      <div className="text-[11px] text-charcoal-muted">{contact.role}</div>
                     </div>
                     <div className="pt-1 flex items-center justify-between">
-                      <a href={`tel:${contact.phone}`} className="text-xs font-semibold text-charcoal hover:text-forest flex items-center gap-1.5">
-                        <Phone className="w-3.5 h-3.5 text-sage" />
-                        <span>{contact.phoneDisplay}</span>
+                      <a href={`tel:${contact.phone}`} className="text-xs font-semibold text-charcoal hover:text-forest flex items-center gap-1.5 whitespace-nowrap">
+                        <Phone className="w-3.5 h-3.5 text-sage shrink-0" />
+                        <span className="whitespace-nowrap">{contact.phoneDisplay}</span>
                       </a>
                       <a
                         href={contact.whatsappUrl}

@@ -6,11 +6,8 @@ import {
   ShieldCheck, 
   ArrowRight, 
   CheckCircle2, 
-  FileText, 
-  Search, 
   AlertCircle, 
-  Leaf, 
-  Layers 
+  Leaf 
 } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Breadcrumbs from '@/components/layout/Breadcrumbs';
@@ -189,7 +186,7 @@ export default function OrganicPsylliumPage() {
               Export Traceability Packaging
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed">
-              Organic lots are packed in clean, food-grade 25 KG multi-wall bags with explicit organic traceability lot numbering to ensure seamless import customs validation.
+              Organic lots are packed in clean, food-grade 25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag (or Private Labeled option) with explicit organic lot traceability numbering to ensure seamless import customs clearance.
             </p>
           </div>
         </div>

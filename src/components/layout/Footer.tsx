@@ -1,14 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import { 
-  ArrowUpRight, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  ShieldCheck, 
-  Globe, 
-  CheckCircle2, 
-  MessageSquare 
+import Image from 'next/image';
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  ShieldCheck,
+  Globe,
+  CheckCircle2,
+  MessageSquare
 } from 'lucide-react';
 import { companyData } from '@/data/companyData';
 
@@ -20,41 +20,41 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-forest text-sage">
+              <div className="p-2 rounded-lg bg-forest-soft/90 text-gold border border-gold/20">
                 <Globe className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-sage font-semibold">Origin Sourcing</div>
-                <div className="text-sm font-medium text-ivory">Gujarat &amp; Rajasthan, India</div>
+                <div className="text-xs uppercase tracking-wider text-gold font-semibold">Origin Sourcing</div>
+                <div className="text-sm font-medium text-ivory">Gujarat, India</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-forest text-sage">
+              <div className="p-2 rounded-lg bg-forest-soft/90 text-gold border border-gold/20">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-sage font-semibold">Available Grades</div>
+                <div className="text-xs uppercase tracking-wider text-gold font-semibold">Available Grades</div>
                 <div className="text-sm font-medium text-ivory">85% to 99% Purity</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-forest text-sage">
+              <div className="p-2 rounded-lg bg-forest-soft/90 text-gold border border-gold/20">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-sage font-semibold">Quality Verification</div>
+                <div className="text-xs uppercase tracking-wider text-gold font-semibold">Quality Verification</div>
                 <div className="text-sm font-medium text-ivory">Batch-Specific COA Testing</div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-forest text-sage">
+              <div className="p-2 rounded-lg bg-forest-soft/90 text-gold border border-gold/20">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wider text-sage font-semibold">Export Desk Hub</div>
+                <div className="text-xs uppercase tracking-wider text-gold font-semibold">Export Desk Hub</div>
                 <div className="text-sm font-medium text-ivory">Surat, Gujarat, India</div>
               </div>
             </div>
@@ -64,55 +64,56 @@ export default function Footer() {
 
       {/* Main Footer Links */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-6">
           {/* Brand Column */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-forest text-ivory flex items-center justify-center font-editorial text-lg font-bold">
-                S
-              </div>
-              <span className="font-editorial text-2xl font-bold tracking-tight text-ivory">
-                SEABIRD EXIM
-              </span>
-            </div>
-            
+          <div className="lg:col-span-3 space-y-4">
+            <Link href="/" className="inline-block group" aria-label="Seabird EXIM Home">
+              <Image
+                src="/images/logo-horizontal-white.svg"
+                alt="Seabird EXIM"
+                width={220}
+                height={38}
+                className="h-9 w-auto object-contain transition-opacity group-hover:opacity-90"
+              />
+            </Link>
+
             <p className="text-sage text-sm font-editorial italic text-base">
               &ldquo;Connecting Indian quality with global demand.&rdquo;
             </p>
-            
+
             <p className="text-cream/70 text-xs leading-relaxed max-w-sm">
               Seabird EXIM is an India-based export company focused on connecting international B2B buyers with quality-verified agricultural commodities. Our current focus is Psyllium Husk (Plantago ovata), supplied according to confirmed buyer specifications.
             </p>
 
             <div className="pt-2 space-y-1.5">
-              <span className="text-sage text-[11px] font-semibold block">WhatsApp Coordinators:</span>
+              <span className="text-sage text-[11px] font-semibold block">Direct Contacts &amp; WhatsApp:</span>
               <div className="flex flex-wrap items-center gap-2">
-                <a 
+                <a
                   href={companyData.contacts[0].whatsappUrl}
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-forest text-sage text-xs font-medium hover:text-ivory hover:bg-forest-light transition-colors"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-forest text-sage text-xs font-medium hover:text-ivory hover:bg-forest-light transition-colors whitespace-nowrap"
                   title={`WhatsApp ${companyData.contacts[0].name} (${companyData.contacts[0].phoneDisplay})`}
                 >
-                  <MessageSquare className="w-3 h-3" />
-                  <span>Divyanshu ({companyData.contacts[0].phoneDisplay})</span>
+                  <MessageSquare className="w-3 h-3 shrink-0" />
+                  <span className="whitespace-nowrap">Divyanshu Patel ({companyData.contacts[0].phoneDisplay})</span>
                 </a>
-                <a 
+                <a
                   href={companyData.contacts[1].whatsappUrl}
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-forest text-sage text-xs font-medium hover:text-ivory hover:bg-forest-light transition-colors"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-forest text-sage text-xs font-medium hover:text-ivory hover:bg-forest-light transition-colors whitespace-nowrap"
                   title={`WhatsApp ${companyData.contacts[1].name} (${companyData.contacts[1].phoneDisplay})`}
                 >
-                  <MessageSquare className="w-3 h-3" />
-                  <span>Neel ({companyData.contacts[1].phoneDisplay})</span>
+                  <MessageSquare className="w-3 h-3 shrink-0" />
+                  <span className="whitespace-nowrap">Neel Patel ({companyData.contacts[1].phoneDisplay})</span>
                 </a>
               </div>
             </div>
           </div>
 
           {/* Products Column */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs uppercase tracking-widest text-sage font-bold mb-4">
               Products
             </h3>
@@ -144,7 +145,7 @@ export default function Footer() {
           </div>
 
           {/* Applications Column */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs uppercase tracking-widest text-sage font-bold mb-4">
               Applications
             </h3>
@@ -183,7 +184,7 @@ export default function Footer() {
           </div>
 
           {/* Company Column */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className="text-xs uppercase tracking-widest text-sage font-bold mb-4">
               Company
             </h3>
@@ -222,17 +223,16 @@ export default function Footer() {
           </div>
 
           {/* Direct Export Contacts Column */}
-          <div>
+          <div className="lg:col-span-3">
             <h3 className="text-xs uppercase tracking-widest text-sage font-bold mb-4">
-              Export Desk
+              Direct Contacts &amp; Export Desk
             </h3>
             <div className="space-y-3 text-xs text-cream/80">
-              {/* Coordinator 1 */}
+              {/* Contact 1 */}
               <div className="space-y-0.5">
                 <div className="text-ivory font-semibold">{companyData.contacts[0].name}</div>
-                <div className="text-[11px] text-sage/80">{companyData.contacts[0].role}</div>
-                <div className="flex items-center gap-2 pt-0.5">
-                  <a href={`tel:${companyData.contacts[0].phone}`} className="hover:text-sage transition-colors">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-0.5">
+                  <a href={`tel:${companyData.contacts[0].phone}`} className="hover:text-sage transition-colors whitespace-nowrap">
                     {companyData.contacts[0].phoneDisplay}
                   </a>
                   <span className="text-sage/40">&bull;</span>
@@ -240,19 +240,18 @@ export default function Footer() {
                     href={companyData.contacts[0].whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sage hover:text-ivory font-medium underline text-[11px]"
+                    className="text-sage hover:text-ivory font-medium underline text-[11px] whitespace-nowrap"
                   >
                     WhatsApp
                   </a>
                 </div>
               </div>
 
-              {/* Coordinator 2 */}
+              {/* Contact 2 */}
               <div className="space-y-0.5">
                 <div className="text-ivory font-semibold">{companyData.contacts[1].name}</div>
-                <div className="text-[11px] text-sage/80">{companyData.contacts[1].role}</div>
-                <div className="flex items-center gap-2 pt-0.5">
-                  <a href={`tel:${companyData.contacts[1].phone}`} className="hover:text-sage transition-colors">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 pt-0.5">
+                  <a href={`tel:${companyData.contacts[1].phone}`} className="hover:text-sage transition-colors whitespace-nowrap">
                     {companyData.contacts[1].phoneDisplay}
                   </a>
                   <span className="text-sage/40">&bull;</span>
@@ -260,14 +259,14 @@ export default function Footer() {
                     href={companyData.contacts[1].whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sage hover:text-ivory font-medium underline text-[11px]"
+                    className="text-sage hover:text-ivory font-medium underline text-[11px] whitespace-nowrap"
                   >
                     WhatsApp
                   </a>
                 </div>
               </div>
 
-              {/* All Three Updated Emails */}
+              {/* Official Correspondence Emails */}
               <div className="pt-2 border-t border-forest-soft/40 space-y-1.5 text-[11px]">
                 <div className="text-sage font-semibold uppercase tracking-wider text-[10px]">Official Correspondence:</div>
                 <div className="flex items-center gap-1.5">
@@ -275,13 +274,6 @@ export default function Footer() {
                   <span className="text-cream/60">Sales:</span>
                   <a href={`mailto:${companyData.salesEmail}`} className="text-cream/90 hover:text-ivory">
                     {companyData.salesEmail}
-                  </a>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Mail className="w-3 h-3 text-sage shrink-0" />
-                  <span className="text-cream/60">Admin:</span>
-                  <a href={`mailto:${companyData.adminEmail}`} className="text-cream/90 hover:text-ivory">
-                    {companyData.adminEmail}
                   </a>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -308,7 +300,7 @@ export default function Footer() {
           <div className="text-center md:text-left">
             &copy; 2026 Seabird EXIM. All Rights Reserved. &bull; seabirdexim.com &bull; Surat, Gujarat, India
           </div>
-          
+
           <div className="flex items-center gap-6 text-[11px]">
             <span>Specification-governed B2B commodity export</span>
             <span className="text-sage/60">&bull;</span>

@@ -126,7 +126,7 @@ export default function FAQPage() {
             Have a Specific Commercial or Technical Question?
           </h3>
           <p className="text-xs sm:text-sm text-charcoal-muted max-w-lg mx-auto">
-            Our export coordinators in Surat are available via WhatsApp and email to review custom specifications and provide prompt answers.
+            Divyanshu Patel and Neel Patel in Surat are available via WhatsApp and email to review custom specifications and provide prompt answers.
           </p>
           <div className="pt-2 flex items-center justify-center">
             <Link
@@ -138,16 +138,15 @@ export default function FAQPage() {
             </Link>
           </div>
 
-          {/* Both Coordinators Cards */}
+          {/* Export Desk Contacts */}
           <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg mx-auto text-left">
             {companyData.contacts.map((contact) => (
               <div key={contact.phone} className="p-3 rounded-xl bg-white border border-cream-dark shadow-xs space-y-1 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-forest">{contact.name}</span>
-                  <span className="text-[10px] text-charcoal-muted">{contact.role}</span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
-                  <a href={`tel:${contact.phone}`} className="font-semibold text-charcoal hover:text-forest">
+                  <a href={`tel:${contact.phone}`} className="font-semibold text-charcoal hover:text-forest whitespace-nowrap">
                     {contact.phoneDisplay}
                   </a>
                   <a

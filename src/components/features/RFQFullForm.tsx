@@ -1,70 +1,46 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { 
-  CheckCircle2, 
+import {
+  CheckCircle2,
   AlertCircle,
-  Send, 
-  MessageSquare, 
-  ShieldCheck, 
-  FileText, 
-  Clock, 
-  Building2, 
-  User, 
-  Mail, 
-  Phone, 
-  Globe2 
+  Send,
+  MessageSquare,
+  ShieldCheck,
+  FileText,
+  Clock,
+  Building2,
+  User,
+  Mail,
+  Phone,
+  Globe2
 } from 'lucide-react';
 import { companyData } from '@/data/companyData';
 
+const emptySubscribe = () => () => { };
+
 function RFQFormContent() {
   const searchParams = useSearchParams();
+  const mounted = React.useSyncExternalStore(emptySubscribe, () => true, () => false);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(() => ({
     fullName: '',
     companyName: '',
     businessEmail: '',
     phoneWhatsapp: '',
-    country: '',
-    product: 'Psyllium Husk',
-    purity: '95%',
-    quantity: '10 MT',
-    packaging: '25 KG Export Bags',
+    country: searchParams.get('country') || '',
+    product: searchParams.get('product') || 'Psyllium Husk',
+    purity: searchParams.get('purity') || '',
+    quantity: searchParams.get('quantity') || '10 MT',
+    packaging: searchParams.get('packaging') || '25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag',
     destinationPort: '',
-    application: 'Food & Beverage',
-    message: '',
-  });
+    application: searchParams.get('application') || 'Food & Beverage',
+    message: searchParams.get('message') || '',
+  }));
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Prepopulate from URL search parameters if available
-  useEffect(() => {
-    const productParam = searchParams.get('product');
-    const purityParam = searchParams.get('purity');
-    const quantityParam = searchParams.get('quantity');
-    const packagingParam = searchParams.get('packaging');
-    const applicationParam = searchParams.get('application');
-    const countryParam = searchParams.get('country');
-    const messageParam = searchParams.get('message');
-
-    setFormData((prev) => ({
-      ...prev,
-      product: productParam || prev.product,
-      purity: purityParam || prev.purity,
-      quantity: quantityParam || prev.quantity,
-      packaging: packagingParam || prev.packaging,
-      application: applicationParam || prev.application,
-      country: countryParam || prev.country,
-      message: messageParam || prev.message,
-    }));
-  }, [searchParams]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -199,7 +175,7 @@ function RFQFormContent() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sage-light text-forest text-xs font-semibold hover:bg-sage transition-colors shadow-xs"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Divyanshu ({companyData.contacts[0].phoneDisplay})</span>
+                      <span>WhatsApp Divyanshu Patel ({companyData.contacts[0].phoneDisplay})</span>
                     </a>
                     <a
                       href={generateWhatsAppUrl(companyData.contacts[1].phone)}
@@ -208,7 +184,7 @@ function RFQFormContent() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sage-light text-forest text-xs font-semibold hover:bg-sage transition-colors shadow-xs"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Neel ({companyData.contacts[1].phoneDisplay})</span>
+                      <span>WhatsApp Neel Patel ({companyData.contacts[1].phoneDisplay})</span>
                     </a>
                   </div>
                 </div>
@@ -271,7 +247,7 @@ function RFQFormContent() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sage-light text-forest text-xs font-semibold hover:bg-sage transition-colors shadow-xs"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Divyanshu ({companyData.contacts[0].phoneDisplay})</span>
+                      <span>WhatsApp Divyanshu Patel ({companyData.contacts[0].phoneDisplay})</span>
                     </a>
                     <a
                       href={generateWhatsAppUrl(companyData.contacts[1].phone)}
@@ -280,7 +256,7 @@ function RFQFormContent() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sage-light text-forest text-xs font-semibold hover:bg-sage transition-colors shadow-xs"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
-                      <span>WhatsApp Neel ({companyData.contacts[1].phoneDisplay})</span>
+                      <span>WhatsApp Neel Patel ({companyData.contacts[1].phoneDisplay})</span>
                     </a>
                   </div>
                 </div>
@@ -440,8 +416,6 @@ function RFQFormContent() {
                       <option value="Psyllium Husk">Psyllium Husk</option>
                       <option value="Organic Psyllium Husk">Organic Psyllium Husk</option>
                       <option value="Private Label Psyllium">Private Label Psyllium</option>
-                      <option value="Psyllium Husk Powder">Psyllium Husk Powder</option>
-                      <option value="Other Agricultural Sourcing">Other Agricultural Sourcing</option>
                     </select>
                   </div>
 
@@ -456,12 +430,12 @@ function RFQFormContent() {
                       onChange={handleChange}
                       className="w-full px-4 py-2.5 rounded-lg border border-cream-dark text-sm bg-white focus:border-forest focus:ring-1 focus:ring-forest"
                     >
+                      <option value="">Select Purity Grade</option>
                       <option value="85%">85% Purity</option>
                       <option value="90%">90% Purity</option>
-                      <option value="95%">95% Purity (Benchmark)</option>
+                      <option value="95%">95% Purity</option>
                       <option value="98%">98% Purity</option>
-                      <option value="99%">99% Purity (Ultra-High)</option>
-                      <option value="Custom Spec">Custom Specification</option>
+                      <option value="99%">99% Purity</option>
                     </select>
                   </div>
 
@@ -498,10 +472,12 @@ function RFQFormContent() {
                       onChange={handleChange}
                       className="w-full px-4 py-2.5 rounded-lg border border-cream-dark text-sm bg-white focus:border-forest focus:ring-1 focus:ring-forest"
                     >
-                      <option value="25 KG Export Bags">25 KG Multi-Wall Paper Bags</option>
-                      <option value="25 KG Woven Poly Bags">25 KG Woven Poly Bags</option>
-                      <option value="25 KG Palletized">25 KG Palletized &amp; Wrapped</option>
-                      <option value="Private Label Branded">Private Label Branded</option>
+                      <option value="25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag">
+                        25 kg net in fresh paper bag with inner poly liner with safety liner lock with extra outer HDPE bag
+                      </option>
+                      <option value="Private Labeled Option">
+                        Private Labeled Option
+                      </option>
                     </select>
                   </div>
 
@@ -583,7 +559,7 @@ function RFQFormContent() {
                     title={`Send via WhatsApp to ${companyData.contacts[0].name} (${companyData.contacts[0].phoneDisplay})`}
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp Divyanshu ({companyData.contacts[0].phoneDisplay})</span>
+                    <span>WhatsApp Divyanshu Patel ({companyData.contacts[0].phoneDisplay})</span>
                   </a>
                   <a
                     href={generateWhatsAppUrl(companyData.contacts[1].phone)}
@@ -593,7 +569,7 @@ function RFQFormContent() {
                     title={`Send via WhatsApp to ${companyData.contacts[1].name} (${companyData.contacts[1].phoneDisplay})`}
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp Neel ({companyData.contacts[1].phoneDisplay})</span>
+                    <span>WhatsApp Neel Patel ({companyData.contacts[1].phoneDisplay})</span>
                   </a>
                 </div>
               </div>
@@ -654,26 +630,25 @@ function RFQFormContent() {
         {/* Direct Contacts Card */}
         <div className="bg-white rounded-2xl border border-cream-dark p-6 shadow-sm space-y-5">
           <div className="text-xs font-bold uppercase tracking-wider text-sage-dark">
-            Direct Trade Contacts
+            Direct Contacts &amp; Export Desk
           </div>
 
           <div className="space-y-4 text-xs">
             <div className="p-3.5 rounded-xl bg-cream/30 border border-cream-dark space-y-1.5">
               <div className="font-bold text-sm text-forest">{companyData.contacts[0].name}</div>
-              <div className="text-charcoal-muted">{companyData.contacts[0].role}</div>
               <div className="pt-1 flex items-center justify-between">
-                <a 
-                  href={`tel:${companyData.contacts[0].phone}`} 
-                  className="font-medium text-charcoal hover:text-forest flex items-center gap-1.5"
+                <a
+                  href={`tel:${companyData.contacts[0].phone}`}
+                  className="font-medium text-charcoal hover:text-forest flex items-center gap-1.5 whitespace-nowrap"
                 >
-                  <Phone className="w-3.5 h-3.5 text-sage" />
-                  <span>{companyData.contacts[0].phoneDisplay}</span>
+                  <Phone className="w-3.5 h-3.5 text-sage shrink-0" />
+                  <span className="whitespace-nowrap">{companyData.contacts[0].phoneDisplay}</span>
                 </a>
                 <a
                   href={companyData.contacts[0].whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-forest hover:text-forest-dark font-semibold text-[11px]"
+                  className="text-forest hover:text-forest-dark font-semibold text-[11px] whitespace-nowrap"
                 >
                   WhatsApp &rarr;
                 </a>
@@ -682,14 +657,13 @@ function RFQFormContent() {
 
             <div className="p-3.5 rounded-xl bg-cream/30 border border-cream-dark space-y-1.5">
               <div className="font-bold text-sm text-forest">{companyData.contacts[1].name}</div>
-              <div className="text-charcoal-muted">{companyData.contacts[1].role}</div>
               <div className="pt-1 flex items-center justify-between">
-                <a 
-                  href={`tel:${companyData.contacts[1].phone}`} 
-                  className="font-medium text-charcoal hover:text-forest flex items-center gap-1.5"
+                <a
+                  href={`tel:${companyData.contacts[1].phone}`}
+                  className="font-medium text-charcoal hover:text-forest flex items-center gap-1.5 whitespace-nowrap"
                 >
-                  <Phone className="w-3.5 h-3.5 text-sage" />
-                  <span>{companyData.contacts[1].phoneDisplay}</span>
+                  <Phone className="w-3.5 h-3.5 text-sage shrink-0" />
+                  <span className="whitespace-nowrap">{companyData.contacts[1].phoneDisplay}</span>
                 </a>
                 <a
                   href={companyData.contacts[1].whatsappUrl}
