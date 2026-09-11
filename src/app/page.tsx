@@ -19,10 +19,12 @@ import PurityGradeCards from '@/components/features/PurityGradeCards';
 import ExportTimeline from '@/components/features/ExportTimeline';
 import ApplicationTabs from '@/components/features/ApplicationTabs';
 import { companyData } from '@/data/companyData';
+import UrlCleaner from '@/components/common/UrlCleaner';
 
 export default function HomePage() {
   return (
     <div className="space-y-20 sm:space-y-28 lg:space-y-36 pb-16">
+      <UrlCleaner />
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden pt-6 sm:pt-10 lg:pt-16">
         {/* Subtle background grain and ambient glow */}

@@ -82,7 +82,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
-            <Link href="/" className="group flex items-center gap-3 z-10" aria-label="Seabird EXIM Home">
+            <Link href="/?home=true" className="group flex items-center gap-3 z-10" aria-label="Seabird EXIM Home">
               <Image 
                 src="/images/logo-horizontal.svg" 
                 alt="Seabird EXIM" 
@@ -454,7 +454,7 @@ export default function Header() {
           >
             {/* Top Bar inside Drawer */}
             <div className="p-4 border-b border-cream flex items-center justify-between bg-white shrink-0">
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
+              <Link href="/?home=true" onClick={() => setMobileMenuOpen(false)} className="flex items-center">
                 <Image 
                   src="/images/logo-horizontal.svg" 
                   alt="Seabird EXIM" 
