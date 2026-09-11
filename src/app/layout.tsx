@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { Playfair_Display, Inter, Cinzel } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import StickyMobileCTA from '@/components/layout/StickyMobileCTA';
+
+
+import SiteLayoutWrapper from '@/components/layout/SiteLayoutWrapper';
 
 const cinzel = Cinzel({
   subsets: ['latin'],
@@ -101,19 +101,9 @@ export default function RootLayout({
         suppressHydrationWarning 
         className="min-h-screen flex flex-col bg-ivory text-charcoal antialiased selection:bg-forest selection:text-ivory"
       >
-        {/* Header */}
-        <Header />
-
-        {/* Main Content Area */}
-        <main className="flex-1 pt-[72px] pb-16 lg:pb-0">
+        <SiteLayoutWrapper>
           {children}
-        </main>
-
-        {/* Footer */}
-        <Footer />
-
-        {/* Sticky Mobile Conversion Bar */}
-        <StickyMobileCTA />
+        </SiteLayoutWrapper>
       </body>
     </html>
   );

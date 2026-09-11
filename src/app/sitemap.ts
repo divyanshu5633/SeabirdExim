@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     '',
+    '/landing',
     '/products',
     '/products/psyllium-husk',
     '/products/organic-psyllium-husk',

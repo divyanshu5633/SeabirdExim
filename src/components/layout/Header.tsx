@@ -478,16 +478,8 @@ export default function Header() {
             <div className="flex-1 overflow-y-auto overscroll-contain p-4 space-y-4 text-sm">
               {/* Navigation Links */}
               <div className="space-y-1">
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
-                >
-                  Home
-                </Link>
-
                 {/* Products Accordion */}
-                <div className="border-t border-cream/60 pt-1">
+                <div>
                   <button
                     type="button"
                     onClick={() => toggleDropdown('mobile-products')}
