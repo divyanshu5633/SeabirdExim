@@ -5,21 +5,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ArrowRight, Volume2, VolumeX } from 'lucide-react';
 
-// ─── STAGE LABELS & TIMELINE (Synced with Trade Journey Videos) ────────────
-interface StageLabel {
-  code: string;
-  stage: string;
-  detail: string;
-}
-
-const STAGE_LABELS: Record<number, StageLabel> = {
-  1: { code: '01', stage: 'ORIGIN TERMINAL', detail: 'EXPORT CARGO — TRUCK ARRIVES AT GANTRY BAY' },
-  2: { code: '02', stage: 'CRANE HOIST & STOWAGE', detail: 'STS SPREADER LOCKS — CONTAINER LIFTS TO VESSEL' },
-  3: { code: '03', stage: 'OPEN OCEAN TRANSIT', detail: 'DEEP SEA VOYAGE — INDIA TO GLOBAL MARKETS' },
-  4: { code: '04', stage: 'DESTINATION DISCHARGE', detail: 'STS CRANE DISCHARGES CONTAINER TO CHASSIS' },
-  5: { code: '05', stage: 'SEABIRD EXIM', detail: 'QUALITY FROM INDIA • BUILT FOR GLOBAL BUYERS' },
-};
-
 const DESKTOP_VIDEO_SRC = '/images/seabird_trade_journey_desktop.mp4';
 const MOBILE_VIDEO_SRC = '/images/seabird_trade_journey_mobile.mp4';
 
@@ -30,7 +15,6 @@ export default function CinematicFilmExperience() {
   const [isMobile, setIsMobile] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [label, setLabel] = useState<StageLabel>(STAGE_LABELS[1]);
   const [brandVisible, setBrandVisible] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -71,28 +55,17 @@ export default function CinematicFilmExperience() {
     return () => window.removeEventListener('keydown', onKey);
   }, [handleSkip]);
 
-  // 3. Video Time Updates & Stage Synchronization (Works for both Desktop & Mobile)
+  // 3. Video Time Updates & Brand Reveal Synchronization
   const handleTimeUpdate = () => {
     const video = videoRef.current;
     if (!video) return;
     const t = video.currentTime;
 
-    if (t < 2.2) {
-      setLabel(STAGE_LABELS[1]);
-      setBrandVisible(false);
-    } else if (t < 4.5) {
-      setLabel(STAGE_LABELS[2]);
-      setBrandVisible(false);
-    } else if (t < 7.2) {
-      setLabel(STAGE_LABELS[3]);
-      setBrandVisible(false);
-    } else if (t < 8.6) {
-      setLabel(STAGE_LABELS[4]);
-      setBrandVisible(false);
-    } else {
+    if (t >= 8.6) {
       // 8.6s onwards: Brand Reveal phase
-      setLabel(STAGE_LABELS[5]);
       setBrandVisible(true);
+    } else {
+      setBrandVisible(false);
     }
   };
 
@@ -183,24 +156,6 @@ export default function CinematicFilmExperience() {
           </button>
         </div>
       </header>
-
-      {/* ── STAGE BADGE (bottom-left) ────────────────────────────────────── */}
-      <div
-        className="absolute bottom-6 left-4 sm:bottom-8 sm:left-8 z-20 pointer-events-none transition-opacity duration-500 max-w-[85vw]"
-        style={{ opacity: brandVisible ? 0 : 1 }}
-      >
-        <div className="flex items-center gap-2 mb-1">
-          <span className="px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 tracking-wider">
-            {label.code}
-          </span>
-          <p className="text-[10px] sm:text-xs font-mono tracking-[0.16em] sm:tracking-[0.2em] font-semibold text-white/90 uppercase truncate">
-            {label.stage}
-          </p>
-        </div>
-        <p className="text-[9px] sm:text-[11px] tracking-wide text-white/60 ml-0.5 truncate">
-          {label.detail}
-        </p>
-      </div>
 
       {/* ── BRAND REVEAL OVERLAY (8.6s onward) ───────────────────────────── */}
       <div
