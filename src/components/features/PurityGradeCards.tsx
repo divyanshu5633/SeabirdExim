@@ -147,7 +147,7 @@ export default function PurityGradeCards({ compact = false }: PurityGradeCardsPr
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cream/60 border border-cream-dark text-xs font-semibold text-forest hover:bg-forest hover:text-ivory transition-colors shadow-xs"
           >
             <FileSpreadsheet className="w-4 h-4 text-sage shrink-0" />
-            <span>View Full Laboratory Specifications &amp; Detailed Technical Limits on Product Page &rarr;</span>
+            <span>View Full Product Specifications &amp; Detailed Technical Limits on Product Page &rarr;</span>
           </Link>
         </div>
       ) : (

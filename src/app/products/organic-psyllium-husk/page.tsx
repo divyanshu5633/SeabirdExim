@@ -130,7 +130,7 @@ export default function OrganicPsylliumPage() {
               <span>Conventional Psyllium</span>
             </div>
             <p className="text-xs text-charcoal-muted leading-relaxed">
-              Cultivated in standard commercial farming belts of Gujarat and Rajasthan. Tested for compliance with standard international food safety maximum residue limits (MRLs).
+              Cultivated in standard commercial farming belts of Gujarat, India. Tested for compliance with standard international food safety maximum residue limits (MRLs).
             </p>
             <ul className="space-y-2 text-xs text-charcoal pt-2">
               <li className="flex items-center gap-2">

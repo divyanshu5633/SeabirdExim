@@ -278,6 +278,13 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Mail className="w-3 h-3 text-sage shrink-0" />
+                  <span className="text-cream/60">Admin:</span>
+                  <a href={`mailto:${companyData.adminEmail}`} className="text-cream/90 hover:text-ivory">
+                    {companyData.adminEmail}
+                  </a>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Mail className="w-3 h-3 text-sage shrink-0" />
                   <span className="text-cream/60">Info:</span>
                   <a href={`mailto:${companyData.infoEmail}`} className="text-cream/90 hover:text-ivory">
                     {companyData.infoEmail}

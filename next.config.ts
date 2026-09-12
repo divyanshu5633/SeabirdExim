@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   ],
   // Disable the development "N" badge indicator
   devIndicators: false,
+  async redirects() {
+    return [
+      {
+        source: '/products/psyllium-husk-powder',
+        destination: '/products/psyllium-husk',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

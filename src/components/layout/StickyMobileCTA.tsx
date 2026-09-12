@@ -66,8 +66,10 @@ export default function StickyMobileCTA() {
 
             <div className="text-[10px] text-charcoal-muted pt-1.5 border-t border-cream space-y-1">
               <div className="font-semibold text-charcoal text-[10px] uppercase tracking-wider">Official Correspondence:</div>
-              <div className="flex flex-wrap gap-x-3 gap-y-0.5 text-forest font-medium text-[11px]">
+              <div className="flex flex-wrap gap-x-2 gap-y-0.5 text-forest font-medium text-[11px]">
                 <a href={`mailto:${companyData.salesEmail}`} className="hover:underline">{companyData.salesEmail}</a>
+                <span>&bull;</span>
+                <a href={`mailto:${companyData.adminEmail}`} className="hover:underline">{companyData.adminEmail}</a>
                 <span>&bull;</span>
                 <a href={`mailto:${companyData.infoEmail}`} className="hover:underline">{companyData.infoEmail}</a>
               </div>

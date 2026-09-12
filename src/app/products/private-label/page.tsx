@@ -27,7 +27,7 @@ export default function PrivateLabelPage() {
     {
       step: '02',
       title: 'Select Product & Specification',
-      description: 'Select purity grade (85% to 99%), form (whole husk or milled powder mesh), and organic vs conventional supply matching your market claims.',
+      description: 'Select purity grade (85% to 99%), packaging format, and organic vs conventional supply matching your market claims.',
     },
     {
       step: '03',

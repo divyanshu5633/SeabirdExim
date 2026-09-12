@@ -5,13 +5,13 @@ export const faqsData: FAQItem[] = [
     id: 'faq-1',
     category: 'Product',
     question: 'What is Psyllium Husk and where is it cultivated?',
-    answer: 'Psyllium Husk is the natural outer epidermal coating of the seeds of the Plantago ovata plant, an annual herb native to the arid and semi-arid agro-climatic regions of northwestern India (principally Gujarat and Rajasthan). It is prized globally as an exceptional natural source of soluble dietary fiber that forms a clear, gelatinous mucilage upon water hydration.',
+    answer: 'Psyllium Husk is the natural outer epidermal coating of the seeds of the Plantago ovata plant, an annual herb cultivated in the prime agro-climatic tracts of Gujarat, India. It is prized globally as an exceptional natural source of soluble dietary fiber that forms a clear, gelatinous mucilage upon water hydration.',
   },
   {
     id: 'faq-2',
     category: 'Product',
-    question: 'What is the difference between Psyllium Husk and Psyllium Husk Powder?',
-    answer: 'Psyllium Husk is the intact, flaky epidermal layer separated from the seed via mechanical de-husking. Psyllium Husk Powder is produced by pulverizing whole husk through pin mills or hammer mills into specified mesh sizes (typically 40, 60, 80, or 100 mesh). Powder dissolves more rapidly and is preferred in capsules and beverages, while whole husk provides natural texture in baking and cereals.',
+    question: 'What is the physical form of Psyllium Husk offered by Seabird EXIM?',
+    answer: 'Seabird EXIM specializes in exporting natural whole Psyllium Husk flakes (the intact botanical epidermal layer mechanically separated from Plantago ovata seeds). Whole husk offers optimal natural mucilage swelling properties (≥ 40 to ≥ 60 ml/g depending on purity grade) and is the global standard for bulk dietary fiber, food processing, and pharmaceutical applications.',
   },
   {
     id: 'faq-3',
@@ -27,9 +27,9 @@ export const faqsData: FAQItem[] = [
   },
   {
     id: 'faq-5',
-    category: 'Mesh & Sizing',
-    question: 'How do I choose the correct mesh or particle size for my application?',
-    answer: 'Mesh requirements depend strictly on your manufacturing equipment and finished product format. Standard whole husk is typical for bulk food and dietary packing. For uniform dispersion in flour blends or rapid cold hydration in drink sachets, 40 to 100 mesh is generally recommended. Particle size requirements can be reviewed and confirmed with our export team prior to packing.',
+    category: 'Product',
+    question: 'What are the key physical characteristics of whole Psyllium Husk flakes?',
+    answer: 'Whole Psyllium Husk consists of clean, delicate botanical wafers separated from Plantago ovata seeds. Key commercial attributes include high natural swell volume (up to ≥ 60 ml/g for 99% purity), low moisture content (≤ 10%), minimal ash residue, and clean visual appearance with minimal extraneous matter, ensuring superior performance in food formulations and nutraceutical products.',
   },
   {
     id: 'faq-6',

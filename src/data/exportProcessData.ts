@@ -12,7 +12,7 @@ export const exportProcessSteps: ExportStep[] = [
     step: '02',
     title: 'Supply Coordination',
     tagline: 'Sourcing & Lot Identification',
-    description: 'Our trade desk coordinates with qualified supply partners in Gujarat and Rajasthan to identify matching harvest lots and verify physical availability.',
+    description: 'Our trade desk coordinates with qualified supply partners in Gujarat, India to identify matching harvest lots and verify physical availability.',
     details: ['Lot identification from proven agricultural belts', 'Sourcing validation against buyer parameters', 'Preliminary laboratory data review', 'Commercial feasibility review'],
   },
   {

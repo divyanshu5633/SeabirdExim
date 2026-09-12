@@ -97,12 +97,15 @@ export interface RFQFormData {
   companyName: string;
   businessEmail: string;
   phoneWhatsapp: string;
+  phoneCountryCode?: string;
   country: string;
   product: string;
-  purity: string;
-  quantity: string;
-  packaging: string;
-  destinationPort: string;
-  application: string;
-  message: string;
+  grade?: string;
+  purity?: string;
+  quantity?: string;
+  quantityUnit?: 'MT' | 'KG';
+  message?: string;
+  packaging?: string;
+  destinationPort?: string;
+  application?: string;
 }

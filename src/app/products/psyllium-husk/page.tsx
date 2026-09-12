@@ -95,7 +95,7 @@ export default function PsylliumHuskPage() {
               </div>
               <div>
                 <span className="text-charcoal-muted uppercase text-[10px] font-bold block">Origin</span>
-                <span className="font-semibold text-charcoal">Gujarat / Rajasthan</span>
+                <span className="font-semibold text-charcoal">Gujarat, India</span>
               </div>
             </div>
           </div>
@@ -143,32 +143,32 @@ export default function PsylliumHuskPage() {
         <PurityGradeCards compact={false} />
       </section>
 
-      {/* 4. Particle Sizing & Mesh Discussion with Visual Comparison */}
+      {/* 4. Swell Volume & Purity Dynamics with Visual Showcase */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="bg-white rounded-3xl border border-cream-dark p-8 sm:p-12 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
           <div className="lg:col-span-7 space-y-4">
             <span className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-sage-light text-forest border border-sage/40 inline-block">
-              Milling &amp; Dispersion
+              Mucilage &amp; Swell Dynamics
             </span>
             <h2 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
-              Particle Size &amp; Mesh Sizing
+              Whole Husk Purity &amp; Swell Capacity
             </h2>
             <p className="text-sm text-charcoal-muted leading-relaxed">
-              Mesh and particle-size requirements can be discussed according to downstream application. While whole husk is the standard export format, milled powder variants (such as 40, 60, 80, or 100 mesh) can be evaluated based on your hydration, hopper flowability, or encapsulation needs.
+              Psyllium Husk is valued across international markets for its pure botanical origin and high swell volume. Sourced as whole flakes from Gujarat, India, every batch is graded from 85% to 99% purity to match your exact viscosity, clarity, and dietary fiber targets.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
               <div className="p-4 rounded-xl bg-cream/30 border border-cream-dark space-y-1">
-                <div className="font-bold text-forest text-sm">Whole Husk (Standard)</div>
+                <div className="font-bold text-forest text-sm">Commercial Grades (85% &ndash; 95%)</div>
                 <p className="text-charcoal-muted leading-relaxed">
-                  Delicate flaky wafers offering gradual swelling and artisanal crumb structure in gluten-free baking and high-fiber cereals.
+                  Robust whole husk flakes delivering strong moisture binding (≥ 35 to ≥ 40 ml/g) for bakery blends, cereals, and industrial fiber formulations.
                 </p>
               </div>
 
               <div className="p-4 rounded-xl bg-cream/30 border border-cream-dark space-y-1">
-                <div className="font-bold text-forest text-sm">Milled Powder (40 &ndash; 100 Mesh)</div>
+                <div className="font-bold text-forest text-sm">Ultra-Pure Grades (98% &ndash; 99%)</div>
                 <p className="text-charcoal-muted leading-relaxed">
-                  Pulverized for rapid cold-water dispersion in instant beverage sachets and consistent bulk density in automatic capsule filling.
+                  Pristine ivory botanical flakes delivering maximum swell volume (≥ 50 to ≥ 60 ml/g) for pharmaceutical OTC and premium dietary supplements.
                 </p>
               </div>
             </div>
@@ -176,24 +176,24 @@ export default function PsylliumHuskPage() {
 
           <div className="lg:col-span-5 bg-cream/40 rounded-2xl p-6 border border-cream-dark space-y-4">
             <h3 className="font-editorial text-lg font-bold text-forest">
-              Custom Mesh Consultation
+              Batch Specification Review
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed">
-              Have specific laser diffraction particle size distribution (PSD) or mesh retention criteria? Our export desk can coordinate tailored milling discussions with our processing partners.
+              Have specific testing protocols, swell volume benchmarks, or heavy metal limits? Our export desk provides batch-specific Certificate of Analysis documentation tailored to your import criteria.
             </p>
             <div className="pt-2">
               <Link
-                href="/contact?product=Psyllium+Husk+Powder&message=Discuss+Particle+Mesh+Requirements#rfq"
+                href="/contact?product=Psyllium+Husk&message=Discuss+Purity+and+Specification+Requirements#rfq"
                 className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark transition-colors"
               >
-                <span>Discuss Particle Requirements</span>
+                <span>Discuss Specification Requirements</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Visual Comparison Showcase */}
+        {/* Visual Showcase */}
         <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-8 lg:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
           <div className="lg:col-span-6 space-y-3">
             <div className="grid grid-cols-3 gap-3">
@@ -201,10 +201,10 @@ export default function PsylliumHuskPage() {
                 <div className="w-10 h-10 mx-auto rounded-xl bg-forest text-ivory font-bold text-xs flex items-center justify-center shadow-xs">
                   85–95%
                 </div>
-                <div className="font-editorial font-bold text-sm text-forest">Whole Husk</div>
+                <div className="font-editorial font-bold text-sm text-forest">Standard Flakes</div>
                 <p className="text-[11px] text-charcoal-muted leading-tight">Coarse translucent flakes with natural fiber density</p>
                 <div className="text-[10px] font-semibold text-sage-dark bg-white/70 py-1 rounded-md">
-                  10–20 Mesh
+                  ≥ 40 ml/g Swell
                 </div>
               </div>
 
@@ -212,18 +212,18 @@ export default function PsylliumHuskPage() {
                 <div className="w-10 h-10 mx-auto rounded-xl bg-forest text-ivory font-bold text-xs flex items-center justify-center shadow-xs">
                   98–99%
                 </div>
-                <div className="font-editorial font-bold text-sm text-forest">Fine Powder</div>
-                <p className="text-[11px] text-charcoal-muted leading-tight">Ultra-fine pulverized rapid-dispersion fiber</p>
+                <div className="font-editorial font-bold text-sm text-forest">Pure Flakes</div>
+                <p className="text-[11px] text-charcoal-muted leading-tight">Pristine ivory botanical flakes with minimal seed residue</p>
                 <div className="text-[10px] font-semibold text-sage-dark bg-white/70 py-1 rounded-md">
-                  60–100 Mesh
+                  ≥ 60 ml/g Swell
                 </div>
               </div>
 
               <div className="p-4 rounded-2xl bg-forest text-ivory text-center space-y-2 card-hover shadow-sm">
                 <div className="w-10 h-10 mx-auto rounded-xl bg-gold text-forest-dark font-bold text-xs flex items-center justify-center shadow-xs">
-                  ≥ 60 ml/g
+                  Mucilage
                 </div>
-                <div className="font-editorial font-bold text-sm text-ivory">Mucilage Gel</div>
+                <div className="font-editorial font-bold text-sm text-ivory">Active Gel</div>
                 <p className="text-[11px] text-cream/80 leading-tight">High-viscosity hydrophilic colloidal matrix</p>
                 <div className="text-[10px] font-semibold text-forest bg-gold-light py-1 rounded-md">
                   Hydrated Matrix
@@ -231,23 +231,23 @@ export default function PsylliumHuskPage() {
               </div>
             </div>
             <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark text-center text-[11px] text-charcoal-muted italic">
-              Physical State Profiles: Whole Husk Flakes &bull; Micro-Milled Powders &bull; Hydrated Gel
+              Whole Husk Flakes &bull; Multi-Stage Aspiration Grading &bull; Hydrated Soluble Mucilage
             </div>
           </div>
 
           <div className="lg:col-span-6 space-y-4">
             <span className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-sage-light text-forest border border-sage/40 inline-block">
-              Visual &amp; Tactile Differentiation
+              Hydration Dynamics
             </span>
             <h3 className="font-editorial text-2xl font-bold text-forest">
-              Hydration Behavior &amp; Mucilage Formation
+              Natural Swelling &amp; Mucilage Formation
             </h3>
             <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
-              Upon addition to aqueous solution, the mucilaginous polysaccharide envelope hydrates rapidly to create a stable, non-Newtonian gel matrix. Whole husk retains structural particulate integrity, whereas 100-mesh powder hydrates into a smooth, homogeneous suspension ideal for direct dietary consumption.
+              Upon addition to aqueous solution, the mucilaginous polysaccharide envelope hydrates rapidly to create a stable, non-Newtonian gel matrix. Whole husk retains its structural integrity while absorbing up to 60 times its dry volume in water, creating a powerful functional fiber base for food and health products.
             </p>
             <div className="pt-2">
               <Link
-                href="/contact?product=Psyllium+Husk&message=Request+Lab+Sample+For+Mesh+Evaluation#rfq"
+                href="/contact?product=Psyllium+Husk&message=Request+Lab+Sample+For+Evaluation#rfq"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark transition-colors"
               >
                 <span>Request Sample For Evaluation</span>
@@ -293,20 +293,20 @@ export default function PsylliumHuskPage() {
               Quality &amp; Regulatory Documentation
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed">
-              Every export consignment is paired with transparent verification documents available according to product, shipment and destination requirements:
+              Export consignments are accompanied by transparent verification documents aligned with product specifications, shipment terms, and destination requirements:
             </p>
             <ul className="space-y-2 text-xs text-charcoal">
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span>Batch-specific <strong>Certificate of Analysis (COA)</strong> covering physical parameters.</span>
+                <span>Batch-specific <strong>Certificate of Analysis (COA)</strong> covering physical parameters, where applicable.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span><strong>Microbiological screening &amp; heavy metal reports</strong> coordinated per destination.</span>
+                <span><strong>Microbiological screening &amp; heavy metal reports</strong> coordinated with accredited laboratories when required.</span>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-4 h-4 text-forest shrink-0 mt-0.5" />
-                <span>Official <strong>Phytosanitary Certificate</strong> &amp; <strong>Certificate of Origin (COO)</strong>.</span>
+                <span>Official <strong>Phytosanitary Certificate</strong> (when required) &amp; <strong>Certificate of Origin (COO)</strong>.</span>
               </li>
             </ul>
           </div>

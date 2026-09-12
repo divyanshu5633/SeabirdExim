@@ -57,13 +57,13 @@ export default function ProductsPage() {
                           Psyllium Husk
                         </h3>
                         <p className="text-xs text-cream/80 leading-relaxed">
-                          Natural soluble dietary fiber &amp; hydrocolloid binder. Sourced directly from certified Gujarat &amp; Rajasthan cultivation belts.
+                          Natural soluble dietary fiber &amp; hydrocolloid binder. Sourced directly from certified Gujarat, India cultivation belts.
                         </p>
                       </div>
                       <div className="grid grid-cols-2 gap-2 pt-3 border-t border-white/20 text-[11px] text-cream/90">
                         <div className="flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />
-                          <span>Whole Flakes &amp; Powders</span>
+                          <span>Whole Husk Flakes</span>
                         </div>
                         <div className="flex items-center gap-1.5">
                           <CheckCircle2 className="w-3.5 h-3.5 text-gold shrink-0" />

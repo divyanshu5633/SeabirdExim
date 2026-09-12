@@ -50,7 +50,7 @@ export default function InsightsPage() {
               Technical Blog
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed mb-4">
-              In-depth procurement guides comparing purity grades, whole husk vs powder milling, and container ocean freight packaging.
+              In-depth procurement guides comparing purity grades, quality testing documentation, and container ocean freight packaging.
             </p>
             <span className="text-xs font-semibold text-forest group-hover:underline flex items-center gap-1">
               <span>Read Articles</span>
@@ -85,13 +85,13 @@ export default function InsightsPage() {
               <FileText className="w-6 h-6" />
             </div>
             <h3 className="font-editorial text-2xl font-bold text-forest mb-2">
-              Quality &amp; Testing
+              Quality &amp; Documentation
             </h3>
             <p className="text-xs text-charcoal-muted leading-relaxed mb-4">
-              Analytical laboratory parameters, microbiological thresholds, heavy metal screening, and export documentation standards.
+              Product specifications, Certificate of Analysis (COA) availability, destination export documentation, and coordinated testing.
             </p>
             <span className="text-xs font-semibold text-forest group-hover:underline flex items-center gap-1">
-              <span>View Testing Standards</span>
+              <span>View Documentation Details</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>

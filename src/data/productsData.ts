@@ -73,8 +73,8 @@ export const productsCatalog: ProductItem[] = [
     shortDescription: 'Natural soluble dietary fiber sourced from India for international food, nutraceutical, and pharmaceutical applications.',
     heroTagline: 'Bulk Export from India | Specification-Focused Supply',
     overview: 'Psyllium Husk is the outer epidermis coating separated from the seeds of the Plantago ovata plant. Recognized globally as one of nature’s most effective sources of soluble dietary fiber, it forms a natural gelatinous mucilage upon hydration. Seabird EXIM coordinates export supply tailored to buyer-specified purity grades from 85% to 99%.',
-    origin: 'India (Gujarat / Rajasthan belt)',
-    form: 'Whole Husk (Powder mesh sizes available on request)',
+    origin: 'Gujarat, India',
+    form: 'Whole Husk',
     packaging: '25 KG Export Bags (Private Labeled Option also available)',
     applications: ['Food & Beverage', 'Nutraceuticals', 'Pharmaceutical OTC', 'Gluten-Free Bakery', 'Functional Foods'],
     features: [
@@ -96,8 +96,8 @@ export const productsCatalog: ProductItem[] = [
     shortDescription: 'Organic Psyllium solutions coordinated for buyers seeking verified clean-label, pesticide-tested supply chains.',
     heroTagline: 'Certified Organic Supply | Traceable Sourcing Solutions',
     overview: 'For brands operating in premium organic health, natural infant foods, and strict clean-label sectors, Seabird EXIM coordinates organically cultivated Psyllium Husk. All organic supply is governed by transparent lot tracing, supplier certificate verification, and batch pesticide residue screenings according to destination market regulations.',
-    origin: 'India',
-    form: 'Whole Husk / Tailored Particle Sizing',
+    origin: 'Gujarat, India',
+    form: 'Whole Husk',
     packaging: '25 KG Export Bags (Private Labeled Option available)',
     applications: ['Organic Dietary Supplements', 'Clean-Label Bakery', 'Organic Baby & Family Nutrition', 'Health Foods'],
     features: [
@@ -119,8 +119,8 @@ export const productsCatalog: ProductItem[] = [
     shortDescription: 'Build and scale your brand with end-to-end specification matching, packaging coordination, and export documentation.',
     heroTagline: 'Tailored Brand Solutions | Sourcing & Packaging Support',
     overview: 'Seabird EXIM supports international brand owners, retail chains, and distributors looking to commercialize branded Psyllium products. We coordinate specification selection, quality compliance, customized bulk or retail-ready packaging, and full export clearance to deliver market-ready inventory.',
-    origin: 'India',
-    form: 'Whole Husk / Custom Powder Mesh',
+    origin: 'Gujarat, India',
+    form: 'Whole Husk / Custom Purity Sizing',
     packaging: 'Private Labeled Option (or standard 25 KG Export Bags)',
     applications: ['Private Label Retail', 'Distributor Brands', 'E-Commerce Brands', 'Contract Food Services'],
     features: [

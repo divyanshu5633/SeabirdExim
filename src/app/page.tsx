@@ -100,7 +100,7 @@ export default function HomePage() {
                     <Globe2 className="w-3.5 h-3.5 text-sage-dark" />
                     <span>INDIA ORIGIN</span>
                   </div>
-                  <div className="text-xs text-charcoal-muted">Sourced from Gujarat/Rajasthan</div>
+                  <div className="text-xs text-charcoal-muted">Sourced from Gujarat, India</div>
                 </div>
 
                 <div className="space-y-1">
@@ -180,7 +180,7 @@ export default function HomePage() {
                   Seabird EXIM is an India-based import and export company focused on connecting international buyers with quality products sourced from India.
                 </p>
                 <p className="text-charcoal-muted">
-                  Our current focus is <strong className="text-charcoal">Psyllium Husk</strong>, supplied according to buyer requirements for food, nutraceutical, pharmaceutical, and other suitable applications. Sourced from the prime agricultural tracts of Gujarat and Rajasthan, every harvest lot undergoes systematic mechanical cleaning and specification alignment.
+                  Our current focus is <strong className="text-charcoal">Psyllium Husk</strong>, supplied according to buyer requirements for food, nutraceutical, pharmaceutical, and other suitable applications. Sourced from the prime agricultural tracts of Gujarat, India, every harvest lot undergoes systematic mechanical cleaning and specification alignment.
                 </p>
               </div>
 
@@ -190,7 +190,7 @@ export default function HomePage() {
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link href="/company/certifications" className="hover:text-forest-dark flex items-center gap-1.5 underline underline-offset-4 group">
-                  <span>View documentation &amp; testing criteria</span>
+                  <span>View quality &amp; documentation</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
@@ -231,26 +231,26 @@ export default function HomePage() {
         <div className="space-y-10">
           <PurityGradeCards compact={true} />
 
-          {/* Three Physical Forms Showcase Card */}
+          {/* Fiber Purity & Swell Dynamics Showcase Card */}
           <div className="bg-white rounded-3xl border border-cream-dark p-6 sm:p-8 lg:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center card-hover">
             <div className="lg:col-span-6 space-y-4">
               <span className="text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full bg-sage-light text-forest border border-sage/40 inline-block">
-                Physical Form &amp; Swell Dynamics
+                Fiber Purity &amp; Swell Dynamics
               </span>
               <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
-                From Whole Flakes to Soluble Mucilage
+                From Whole Flakes to Active Soluble Mucilage
               </h3>
               <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
-                Psyllium Husk is valued for its versatility in both intact and pulverized forms. Shown below: raw whole husk flakes (left), finely milled 100-mesh powder (center), and hydrated botanical gel demonstrating superior swell volume (right).
+                Psyllium Husk is valued globally for its pure botanical origin and high mucilage swell volume. Shown below: intact whole husk flakes (left), refined high-purity sortex grades (center), and hydrated botanical gel demonstrating superior swell capacity (right).
               </p>
               <div className="grid grid-cols-3 gap-3 pt-2 text-center">
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
-                  <div className="text-[10px] uppercase font-bold text-sage-dark">Form A</div>
+                  <div className="text-[10px] uppercase font-bold text-sage-dark">Botanical</div>
                   <div className="font-bold text-xs text-charcoal mt-0.5">Whole Husk</div>
                 </div>
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
-                  <div className="text-[10px] uppercase font-bold text-sage-dark">Form B</div>
-                  <div className="font-bold text-xs text-charcoal mt-0.5">Fine Powder</div>
+                  <div className="text-[10px] uppercase font-bold text-sage-dark">Purity</div>
+                  <div className="font-bold text-xs text-charcoal mt-0.5">85% – 99%</div>
                 </div>
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
                   <div className="text-[10px] uppercase font-bold text-sage-dark">Hydrated</div>
@@ -263,18 +263,18 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden aspect-[16/9] border border-cream-dark shadow-sm bg-cream/20 shimmer-sweep">
                 <Image
                   src="/images/psyllium_grades_comparison.jpg"
-                  alt="Psyllium whole husk flakes, 100 mesh powder, and hydrated soluble mucilage gel"
+                  alt="Psyllium whole husk flakes, sortex purity grades, and hydrated soluble mucilage gel"
                   fill
                   className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-charcoal/80 backdrop-blur-md text-ivory text-[10px] font-semibold flex items-center gap-1.5 shadow-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Physical Forms</span>
+                  <span>Whole Husk Dynamics</span>
                 </div>
               </div>
               <div className="mt-2 text-center text-[11px] text-charcoal-muted italic">
-                Left: Whole Husk Flakes &bull; Center: Fine Milled Powder &bull; Right: Hydrated Mucilage
+                Left: Whole Husk Flakes &bull; Center: Purity Graded Flakes &bull; Right: Hydrated Mucilage
               </div>
             </div>
           </div>
@@ -284,13 +284,13 @@ export default function HomePage() {
             <div className="space-y-1">
               <div className="text-[10px] uppercase font-bold tracking-wider text-charcoal-muted">Botanical Origin</div>
               <div className="font-editorial text-lg font-bold text-forest">India</div>
-              <p className="text-xs text-charcoal-muted">Gujarat &amp; Rajasthan harvest belts</p>
+              <p className="text-xs text-charcoal-muted">Gujarat, India harvest belt</p>
             </div>
 
             <div className="space-y-1">
               <div className="text-[10px] uppercase font-bold tracking-wider text-charcoal-muted">Export Form</div>
               <div className="font-editorial text-lg font-bold text-forest">Whole Husk</div>
-              <p className="text-xs text-charcoal-muted">Powder mesh sizing available on request</p>
+              <p className="text-xs text-charcoal-muted">Purity grades 85% to 99% available</p>
             </div>
 
             <div className="space-y-1">
@@ -369,7 +369,7 @@ export default function HomePage() {
                 Quality You Can Verify
               </h2>
               <p className="text-sm sm:text-base text-cream/80 max-w-xl leading-relaxed">
-                We believe in verifiable parameters over generic claims. Every export consignment is governed by batch laboratory analysis, physical swelling assessment, and compliant export certificates.
+                We believe in verifiable parameters over generic claims. Shipments are supported by confirmed product specifications, batch documentation, and destination export paperwork.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
@@ -390,7 +390,7 @@ export default function HomePage() {
                   href="/company/certifications"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sage-light text-forest text-xs font-bold hover:bg-white transition-colors"
                 >
-                  <span>VIEW QUALITY &amp; DOCUMENTATION PROTOCOLS</span>
+                  <span>VIEW QUALITY &amp; DOCUMENTATION</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -401,14 +401,14 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden border border-forest-soft aspect-[4/3] shadow-2xl shimmer-sweep animate-float-slow-reverse">
                 <Image
                   src="/images/psyllium_quality_lab.jpg"
-                  alt="Analytical laboratory bench with psyllium husk swell volume and microbial test verification"
+                  alt="Quality documentation and specification verification for psyllium husk exports"
                   fill
                   className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                 />
                 <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-forest/80 backdrop-blur-md text-ivory text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1.5 animate-pulse-glow">
                   <span className="w-1.5 h-1.5 rounded-full bg-gold animate-ping" />
-                  <span>Lab Monograph QA</span>
+                  <span>Specification QA</span>
                 </div>
               </div>
               <div className="mt-3 text-[11px] text-sage/70 italic text-center">
@@ -590,6 +590,8 @@ export default function HomePage() {
             {/* Official Emails & Location */}
             <div className="pt-4 text-xs text-sage/80 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
               <span>Sales: <a href={`mailto:${companyData.salesEmail}`} className="text-ivory hover:underline font-medium">{companyData.salesEmail}</a></span>
+              <span>&bull;</span>
+              <span>Admin: <a href={`mailto:${companyData.adminEmail}`} className="text-ivory hover:underline font-medium">{companyData.adminEmail}</a></span>
               <span>&bull;</span>
               <span>Info: <a href={`mailto:${companyData.infoEmail}`} className="text-ivory hover:underline font-medium">{companyData.infoEmail}</a></span>
               <span>&bull;</span>

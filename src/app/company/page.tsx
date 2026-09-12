@@ -57,7 +57,7 @@ export default function CompanyPage() {
                 href="/company/certifications"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-cream-dark bg-white text-charcoal text-sm font-semibold hover:bg-cream/40 transition-colors"
               >
-                <span>QUALITY PROTOCOLS</span>
+                <span>QUALITY &amp; DOCUMENTATION</span>
               </Link>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function CompanyPage() {
                 Grounded in the Heart of India&apos;s Psyllium Capital
               </h3>
               <p className="text-sm text-charcoal-muted leading-relaxed">
-                Gujarat and southwestern Rajasthan yield over 85% of the planet&apos;s commercial Psyllium (Plantago ovata). Having our operating headquarters in Surat places Seabird EXIM directly adjacent to the key cultivation tracts, auction mandis, and multi-generational grower clusters.
+                The fertile agricultural tracts of Gujarat, India yield over 85% of the planet&apos;s commercial Psyllium (Plantago ovata). Having our operating headquarters in Surat places Seabird EXIM directly adjacent to the key cultivation tracts, auction mandis, and multi-generational grower clusters.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
@@ -186,22 +186,22 @@ export default function CompanyPage() {
             <div className="lg:col-span-6 space-y-4 order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sage-light text-forest text-xs font-bold uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-gold" />
-                <span>Chapter 03 &bull; Pharmacopeial Verification</span>
+                <span>Chapter 03 &bull; Quality Verification &amp; Documentation</span>
               </div>
               <h3 className="font-editorial text-2xl sm:text-3xl font-bold text-forest">
-                Analytical Testing Before Any Lot Dispatches
+                Specification Verification &amp; Shipment Records
               </h3>
               <p className="text-sm text-charcoal-muted leading-relaxed">
-                We believe true trade excellence lies in verification. Every batch is analyzed against international pharmacopeial criteria (USP, BP, EP) — measuring rapid swelling index (up to ≥ 60 ml/g), moisture retention ≤ 10%, heavy metals (ICP-MS), and stringent microbiological standards.
+                We believe true trade excellence lies in verification and transparent coordination. Consignments are aligned with recognized pharmacopeial benchmarks (USP, BP, EP) — confirming parameters such as swelling volume (up to &ge; 60 ml/g), moisture retention &le; 10%, and destination-specific requirements. Additional testing can be coordinated with accredited third-party laboratories when required.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
-                  <div className="font-bold text-forest">Batch COA Guarantee</div>
-                  <div className="text-charcoal-muted text-[11px] mt-0.5">Accredited laboratory metrics with each container</div>
+                  <div className="font-bold text-forest">Batch Documentation</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Shipment-specific records and COA where applicable</div>
                 </div>
                 <div className="p-3 rounded-xl bg-cream/30 border border-cream-dark">
-                  <div className="font-bold text-forest">Monograph Compliance</div>
-                  <div className="text-charcoal-muted text-[11px] mt-0.5">Satisfying strict US &amp; European food/pharma codes</div>
+                  <div className="font-bold text-forest">Standard Compliance</div>
+                  <div className="text-charcoal-muted text-[11px] mt-0.5">Aligned with international food and pharma benchmarks</div>
                 </div>
               </div>
             </div>
@@ -209,13 +209,13 @@ export default function CompanyPage() {
               <div className="relative rounded-2xl overflow-hidden aspect-[16/10] border border-cream-dark shadow-md bg-cream/20 shimmer-sweep">
                 <Image
                   src="/images/story_qa_testing.jpg"
-                  alt="Analytical chemists testing psyllium swelling volume and microbiological safety"
+                  alt="Quality verification and shipment documentation coordination for psyllium husk"
                   fill
                   className="object-cover object-center img-hover-zoom transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-forest/85 backdrop-blur-md text-ivory text-[10px] font-bold tracking-wider uppercase">
-                  USP / EP Swell Volume QA
+                  Quality &amp; Documentation
                 </div>
               </div>
             </div>
@@ -280,7 +280,7 @@ export default function CompanyPage() {
                 Qualified Supply Networks
               </h3>
               <p>
-                Rather than claiming factory ownership, we maintain direct, vetted relationships with specialized processing mills and agricultural clusters across Gujarat and Rajasthan. This gives us flexible access to multiple harvest grades.
+                Rather than claiming factory ownership, we maintain direct, vetted relationships with specialized processing mills and agricultural clusters across Gujarat, India. This gives us flexible access to multiple harvest grades.
               </p>
             </div>
 

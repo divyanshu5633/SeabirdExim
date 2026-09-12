@@ -10,19 +10,28 @@ export async function POST(request: Request) {
       businessEmail,
       phoneWhatsapp,
       country,
-      product,
-      purity,
+      product = 'Psyllium Husk',
+      grade,
       quantity,
-      packaging,
-      destinationPort,
-      application,
       message,
     } = body;
 
-    // Validate required fields
-    if (!fullName || !businessEmail || !country || !quantity) {
+    // Validate strictly the required first-inquiry fields
+    if (!fullName || !companyName || !businessEmail || !phoneWhatsapp || !country) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
+        { 
+          success: false, 
+          error: 'Please fill in all required fields: Full Name, Company, Business Email, Phone/WhatsApp, and Country.' 
+        },
+        { status: 400 }
+      );
+    }
+
+    // Basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(businessEmail.trim())) {
+      return NextResponse.json(
+        { success: false, error: 'Please enter a valid business email address.' },
         { status: 400 }
       );
     }
@@ -35,24 +44,24 @@ export async function POST(request: Request) {
     const toEmail = process.env.RFQ_TO_EMAIL?.trim() || 'sales@seabirdexim.com';
     const ccEmails = process.env.RFQ_CC_EMAIL?.trim() || 'admin@seabirdexim.com, info@seabirdexim.com';
 
-    // If SMTP credentials are not yet set in .env.local or contain placeholder
+    // If SMTP credentials are not yet configured in .env.local
     const isUnconfigured = !host || !user || !pass || rawPass.includes('PASTE_YOUR') || pass === '';
 
     if (isUnconfigured) {
       console.warn(
-        '[RFQ Service] SMTP not configured in .env.local. Received inquiry:',
-        { fullName, companyName, businessEmail, product, purity, quantity, country }
+        '[RFQ Service] SMTP not configured in .env.local. Captured first inquiry:',
+        { fullName, companyName, businessEmail, phoneWhatsapp, country, product, grade, quantity }
       );
 
       return NextResponse.json({
         success: true,
         isSimulated: true,
         message:
-          'Enquiry captured. Note: SMTP credentials not configured in .env.local, so physical email was not dispatched via mail server.',
+          'Inquiry captured successfully. (Note: SMTP credentials not configured in .env.local, email was not physically sent via mail server).',
       });
     }
 
-    // Configure Nodemailer transporter (optimized for Google Workspace / Gmail or custom SMTP)
+    // Configure Nodemailer transporter (Gmail / Google Workspace or standard SMTP)
     const isGmail = host === 'smtp.gmail.com' || host === 'gmail';
     const transporter = nodemailer.createTransport(
       isGmail
@@ -60,55 +69,68 @@ export async function POST(request: Request) {
             host: 'smtp.gmail.com',
             port: 465,
             secure: true,
-            auth: {
-              user,
-              pass,
-            },
+            auth: { user, pass },
           }
         : {
             host,
             port,
             secure: port === 465,
-            auth: {
-              user,
-              pass,
-            },
+            auth: { user, pass },
           }
     );
 
+    // Clean plain text representation
+    const textContent = `
+NEW WEBSITE INQUIRY
+
+BUYER DETAILS
+- Full Name: ${fullName.trim()}
+- Company: ${companyName.trim()}
+- Business Email: ${businessEmail.trim()}
+- Phone / WhatsApp: ${phoneWhatsapp.trim()}
+- Country: ${country.trim()}
+
+PRODUCT REQUIREMENT
+- Product: ${product}
+- Grade: ${grade ? grade.trim() : 'Not specified / Need guidance'}
+- Estimated Quantity: ${quantity ? quantity.trim() : 'Not specified'}
+- Message / Requirement: ${message ? message.trim() : 'None'}
+
+--
+Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
+    `.trim();
+
+    // Clean HTML email representation
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #F9F7F2; padding: 24px; border-radius: 12px; border: 1px solid #E5DDD1;">
         <div style="background-color: #0A6684; padding: 20px; border-radius: 8px; text-align: center; color: #FFFFFF;">
           <h1 style="margin: 0; font-size: 22px; letter-spacing: 1px; color: #FFFFFF;">SEABIRD EXIM</h1>
-          <p style="margin: 4px 0 0; font-size: 13px; color: #D2AC67; font-weight: bold;">New Commercial RFQ Received</p>
+          <p style="margin: 4px 0 0; font-size: 13px; color: #D2AC67; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">New Website Inquiry</p>
         </div>
 
         <div style="background-color: #FFFFFF; padding: 24px; border-radius: 8px; margin-top: 16px; border: 1px solid #E5DDD1;">
-          <h2 style="font-size: 16px; color: #0A6684; margin-top: 0; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px;">Buyer & Contact Details</h2>
+          <h2 style="font-size: 15px; color: #0A6684; margin-top: 0; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Buyer Details</h2>
           <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
-            <tr><td style="padding: 6px 0; color: #666; width: 140px;">Contact Name:</td><td style="font-weight: bold; color: #111E24;">${fullName}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Company:</td><td style="font-weight: bold; color: #111E24;">${companyName || 'Not specified'}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Business Email:</td><td><a href="mailto:${businessEmail}" style="color: #0A6684; font-weight: bold;">${businessEmail}</a></td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Phone / WhatsApp:</td><td style="color: #111E24;">${phoneWhatsapp || 'Not provided'}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Destination Country:</td><td style="font-weight: bold; color: #0A6684;">${country}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Destination Port:</td><td>${destinationPort || 'TBD'}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666; width: 140px;">Full Name:</td><td style="font-weight: bold; color: #111E24;">${fullName.trim()}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Company:</td><td style="font-weight: bold; color: #111E24;">${companyName.trim()}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Business Email:</td><td><a href="mailto:${businessEmail.trim()}" style="color: #0A6684; font-weight: bold;">${businessEmail.trim()}</a></td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Phone / WhatsApp:</td><td style="font-weight: bold; color: #111E24;">${phoneWhatsapp.trim()}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Country:</td><td style="font-weight: bold; color: #0A6684;">${country.trim()}</td></tr>
           </table>
 
-          <h2 style="font-size: 16px; color: #0A6684; margin-top: 20px; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px;">Procurement Specifications</h2>
+          <h2 style="font-size: 15px; color: #0A6684; margin-top: 22px; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Product Requirement</h2>
           <table style="width: 100%; font-size: 14px; border-collapse: collapse;">
             <tr><td style="padding: 6px 0; color: #666; width: 140px;">Product:</td><td style="font-weight: bold; color: #0A6684;">${product}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Purity Grade:</td><td style="font-weight: bold; color: #0A6684; background-color: #F0EAE1; padding: 2px 8px; border-radius: 4px; display: inline-block;">${purity}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Target Quantity:</td><td style="font-weight: bold; color: #111E24;">${quantity}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Packaging:</td><td>${packaging}</td></tr>
-            <tr><td style="padding: 6px 0; color: #666;">Downstream Application:</td><td>${application}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Grade:</td><td style="font-weight: bold; color: #111E24; background-color: #F0EAE1; padding: 2px 8px; border-radius: 4px; display: inline-block;">${grade ? grade.trim() : 'Not specified / Need guidance'}</td></tr>
+            <tr><td style="padding: 6px 0; color: #666;">Estimated Quantity:</td><td style="font-weight: bold; color: #111E24;">${quantity ? quantity.trim() : 'Not specified'}</td></tr>
           </table>
 
           ${
-            message
+            message && message.trim()
               ? `
-            <h2 style="font-size: 16px; color: #0A6684; margin-top: 20px; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px;">Special Instructions / Technical Notes</h2>
-            <div style="background-color: #F9F7F2; padding: 12px; border-radius: 6px; font-size: 13px; color: #111E24; line-height: 1.5;">
-              ${message.replace(/\n/g, '<br/>')}
+            <h2 style="font-size: 15px; color: #0A6684; margin-top: 22px; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Message / Requirement</h2>
+            <div style="background-color: #F9F7F2; padding: 12px 14px; border-radius: 6px; font-size: 13px; color: #111E24; line-height: 1.6; border-left: 3px solid #0A6684;">
+              ${message.trim().replace(/\n/g, '<br/>')}
             </div>
           `
               : ''
@@ -121,24 +143,30 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // Send Mail to Seabird EXIM team
+    // Subject line
+    const gradeSubject = grade ? ` (${grade})` : '';
+    const qtySubject = quantity ? ` - ${quantity}` : '';
+    const subject = `[New Website Inquiry] ${product}${gradeSubject}${qtySubject} from ${companyName.trim()} (${country.trim()})`;
+
+    // Send Mail to Seabird EXIM export desk
     await transporter.sendMail({
       from: `"Seabird EXIM Website" <${user}>`,
       to: toEmail,
       cc: ccEmails,
-      replyTo: businessEmail,
-      subject: `[New RFQ] ${product} (${purity}) - ${quantity} from ${companyName || fullName} (${country})`,
+      replyTo: businessEmail.trim(),
+      subject,
+      text: textContent,
       html: emailHtml,
     });
 
     return NextResponse.json({
       success: true,
-      message: 'RFQ email dispatched successfully to export desk.',
+      message: 'Your inquiry has been submitted successfully to our export desk.',
     });
   } catch (error) {
     console.error('[RFQ Error]:', error);
     return NextResponse.json(
-      { success: false, error: (error as Error).message || 'Failed to send inquiry' },
+      { success: false, error: (error as Error).message || 'Failed to dispatch inquiry' },
       { status: 500 }
     );
   }

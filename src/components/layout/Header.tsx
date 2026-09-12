@@ -226,7 +226,7 @@ export default function Header() {
                         </div>
                         <div>
                           <div className="text-sm font-semibold text-charcoal group-hover:text-forest">Quality &amp; Documentation</div>
-                          <div className="text-xs text-charcoal-muted">COA parameters, microbial tests &amp; export standards</div>
+                          <div className="text-xs text-charcoal-muted">Product specs, COA records &amp; export documentation</div>
                         </div>
                       </Link>
                     </div>
@@ -559,7 +559,7 @@ export default function Header() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="block py-1.5 font-medium text-charcoal hover:text-forest"
                       >
-                        Quality &amp; Certifications
+                        Quality &amp; Documentation
                       </Link>
                     </div>
                   )}

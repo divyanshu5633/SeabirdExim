@@ -60,6 +60,7 @@ export const companyData: CompanyData = {
   infoEmail: 'info@seabirdexim.com',
   emailList: [
     { label: 'Commercial Sales', address: 'sales@seabirdexim.com', purpose: 'Quotations & Commercial Contracting' },
+    { label: 'Corporate Admin', address: 'admin@seabirdexim.com', purpose: 'Administrative & Regulatory Compliance' },
     { label: 'General Information', address: 'info@seabirdexim.com', purpose: 'General Inquiries & Product Specifications' },
   ],
   domain: 'seabirdexim.com',
@@ -83,7 +84,7 @@ export const companyData: CompanyData = {
     {
       number: '01',
       title: 'Specification-Focused Sourcing',
-      description: 'We do not sell generic lots. Every batch of Psyllium Husk is sourced and coordinated against buyer-confirmed purity, swell volume, and mesh specifications.',
+      description: 'We do not sell generic lots. Every batch of Psyllium Husk is sourced and coordinated against buyer-confirmed purity, swell volume, and quality specifications.',
     },
     {
       number: '02',
@@ -114,13 +115,13 @@ export const companyData: CompanyData = {
     },
     {
       title: 'Certificate of Analysis (COA)',
-      description: 'Batch-specific COA issued for every dispatch verifying compliance with contract parameters prior to container loading.',
-      coverage: 'Laboratory Batch Verification & Test Parameters',
+      description: 'Batch-specific COA provided where applicable, confirming compliance with agreed specifications prior to dispatch.',
+      coverage: 'Batch Parameters & Product Specification Records',
     },
     {
-      title: 'Quality & Microbial Testing',
-      description: 'Independent laboratory testing coordinated where applicable, covering TAMC, TYMC, Coliforms, Salmonella, and heavy metal screens.',
-      coverage: 'Microbiological panels & Heavy metals (Pb, As, Cd, Hg)',
+      title: 'Testing Coordination When Required',
+      description: 'Independent laboratory testing coordinated when requested by the buyer or required by the destination market.',
+      coverage: 'Microbiological, pesticide, and heavy metal testing on demand',
     },
     {
       title: 'Export Documentation',
