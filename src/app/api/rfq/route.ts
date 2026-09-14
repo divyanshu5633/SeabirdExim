@@ -56,9 +56,17 @@ export async function POST(request: Request) {
       pass.length === 0;
 
     if (isUnconfigured) {
-      console.error(
-        '[RFQ Error]: SMTP server or credentials not configured in production environment. Inquiries cannot be dispatched.'
-      );
+      console.error('[RFQ Error]: Missing or invalid SMTP environment variables in Vercel/server runtime:', {
+        host: host || 'MISSING',
+        port,
+        user: user || 'MISSING',
+        passConfigured: Boolean(pass),
+        passLength: pass ? pass.length : 0,
+        isPlaceholder:
+          rawPass.includes('PASTE_YOUR') ||
+          rawPass.includes('CHANGE_ME') ||
+          rawPass.includes('YOUR_APP_PASSWORD'),
+      });
 
       return NextResponse.json(
         {
@@ -176,7 +184,13 @@ Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
     });
   } catch (error) {
     // Diagnostic log on server (NEVER logs credentials or SMTP_PASS)
-    console.error('[RFQ Error]: Exception during RFQ submission:', (error as Error)?.message || error);
+    const err = error as Error & { code?: string; responseCode?: number; command?: string };
+    console.error('[RFQ Error]: Exception during RFQ submission:', {
+      message: err?.message || 'Unknown error',
+      code: err?.code,
+      responseCode: err?.responseCode,
+      command: err?.command,
+    });
     return NextResponse.json(
       {
         success: false,
