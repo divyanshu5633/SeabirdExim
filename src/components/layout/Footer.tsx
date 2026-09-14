@@ -219,6 +219,17 @@ export default function Footer() {
                   Buyer FAQ
                 </Link>
               </li>
+              <li>
+                <a 
+                  href="/Seabird%20Exim%20Broucher.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-ivory transition-colors flex items-center gap-1 group text-gold font-medium"
+                >
+                  <span>Company Brochure (PDF)</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-70 group-hover:opacity-100 transition-opacity" />
+                </a>
+              </li>
             </ul>
           </div>
 

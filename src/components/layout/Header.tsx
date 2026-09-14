@@ -18,9 +18,14 @@ import {
   Briefcase, 
   BookOpen, 
   HelpCircle,
-  FileText
+  FileText,
+  Download,
+  ExternalLink
 } from 'lucide-react';
 import { companyData } from '@/data/companyData';
+
+const BROCHURE_URL = '/Seabird%20Exim%20Broucher.pdf';
+const BROCHURE_FILENAME = 'Seabird-Exim-Brochure.pdf';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -391,6 +396,20 @@ export default function Header() {
                 )}
               </div>
 
+              {/* Direct PDF Brochure Action (Opens PDF directly in new tab) */}
+              <a 
+                href={BROCHURE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 py-2 px-3 rounded-lg border border-cream-dark bg-white hover:bg-cream/40 text-forest text-xs font-semibold shadow-xs transition-colors group cursor-pointer"
+                title="Directly Open Seabird EXIM Brochure (PDF)"
+                aria-label="Directly Open Seabird EXIM Brochure (PDF)"
+              >
+                <FileText className="w-3.5 h-3.5 text-forest" />
+                <span>Brochure</span>
+                <ExternalLink className="w-3 h-3 text-sage-dark opacity-70 group-hover:opacity-100 transition-opacity" />
+              </a>
+
               {/* Primary Quote CTA */}
               <Link 
                 href="/contact#rfq"
@@ -403,6 +422,19 @@ export default function Header() {
 
             {/* Mobile Hamburger & Actions */}
             <div className="flex items-center gap-2 lg:hidden relative z-50">
+              {/* Direct PDF Brochure Open Button on Mobile/Tablet Header */}
+              <a 
+                href={BROCHURE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Seabird EXIM Brochure (PDF)"
+                title="Open Seabird EXIM Brochure (PDF)"
+                className="h-10 px-2.5 sm:px-3 rounded-lg bg-white border border-cream-dark text-forest flex items-center gap-1.5 shadow-xs text-xs font-semibold hover:bg-cream/40 active:scale-95 transition-all"
+              >
+                <FileText className="w-4 h-4 text-forest shrink-0" />
+                <span className="hidden sm:inline">Brochure</span>
+              </a>
+
               <Link 
                 href="/contact"
                 aria-label="Surat Export Desk Contacts"
@@ -612,6 +644,65 @@ export default function Header() {
                   >
                     Contact &amp; RFQ
                   </Link>
+                </div>
+
+                {/* Download Brochure Link in Navigation */}
+                <div className="border-t border-cream/60 pt-1">
+                  <a
+                    href={BROCHURE_URL}
+                    download={BROCHURE_FILENAME}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-between py-2.5 px-3 rounded-lg font-semibold text-charcoal hover:bg-cream/50 transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-forest" />
+                      <span>Company Brochure</span>
+                    </span>
+                    <span className="text-[10px] font-bold text-forest bg-sage-light/80 px-2 py-0.5 rounded uppercase tracking-wider flex items-center gap-1">
+                      <Download className="w-2.5 h-2.5" />
+                      Download
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Download Brochure Section in Mobile Sidebar */}
+              <div className="p-3.5 rounded-xl bg-sage-light/50 border border-cream-dark space-y-2.5">
+                <div className="flex items-start gap-3">
+                  <div className="p-2 rounded-lg bg-white border border-cream-dark text-forest shadow-xs shrink-0">
+                    <FileText className="w-5 h-5 text-forest" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs font-bold text-charcoal">Seabird EXIM Brochure</div>
+                    <div className="text-[11px] text-charcoal-muted leading-tight mt-0.5">
+                      Product specifications, purity grades &amp; export credentials
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-0.5">
+                  <a
+                    href={BROCHURE_URL}
+                    download={BROCHURE_FILENAME}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-forest text-ivory text-xs font-semibold hover:bg-forest-dark active:scale-[0.98] transition-all shadow-xs"
+                    title="Download Brochure PDF"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download</span>
+                  </a>
+
+                  <a
+                    href={BROCHURE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-lg bg-white border border-cream-dark text-forest text-xs font-semibold hover:bg-cream/40 active:scale-[0.98] transition-all shadow-xs"
+                    title="Directly View Brochure PDF"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>View PDF</span>
+                  </a>
                 </div>
               </div>
 
