@@ -5,8 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import {
   CheckCircle2,
   AlertCircle,
-  ArrowRight,
-  Send,
   MessageSquare,
   ShieldCheck,
   FileText,
@@ -22,7 +20,7 @@ import SearchableCountrySelect from '@/components/ui/SearchableCountrySelect';
 import InternationalPhoneInput from '@/components/ui/InternationalPhoneInput';
 import { findCountry } from '@/data/countriesData';
 
-const emptySubscribe = () => () => {};
+const emptySubscribe = () => () => { };
 
 function RFQFormContent() {
   const searchParams = useSearchParams();
@@ -32,8 +30,9 @@ function RFQFormContent() {
   const initialPurityParam = searchParams.get('purity') || '';
   let initialGrade = '';
   if (initialPurityParam) {
-    if (initialPurityParam.includes('%') && !initialPurityParam.includes('Purity')) {
-      initialGrade = `${initialPurityParam} Purity`;
+    const cleanPurity = initialPurityParam.replace(/\s*Purity/i, '').trim();
+    if (['85%', '90%', '95%', '98%', '99%'].includes(cleanPurity)) {
+      initialGrade = cleanPurity;
     } else {
       initialGrade = initialPurityParam;
     }
@@ -81,17 +80,24 @@ function RFQFormContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     success: boolean;
-    isSimulated?: boolean;
     message?: string;
   } | null>(null);
+  const [submittedSnapshot, setSubmittedSnapshot] = useState<{
+    fullName: string;
+    companyName: string;
+    country: string;
+    product: string;
+    grade: string;
+    quantity: string;
+  } | null>(null);
 
-  // Grade options
+  // Grade options (Psyllium Husk purity grades)
   const gradeOptions = [
-    '85% Purity',
-    '90% Purity',
-    '95% Purity',
-    '98% Purity',
-    '99% Purity',
+    '85%',
+    '90%',
+    '95%',
+    '98%',
+    '99%',
     'Not Sure / Need Guidance',
   ];
 
@@ -184,17 +190,52 @@ function RFQFormContent() {
         body: JSON.stringify(payload),
       });
       const data = await res.json();
-      setSubmitStatus({
-        success: data.success === true,
-        isSimulated: data.isSimulated,
-        message: data.error || data.message,
-      });
+
+      if (res.ok && data.success === true) {
+        // Snapshot the submitted data for the confirmation display
+        setSubmittedSnapshot({
+          fullName: formData.fullName.trim(),
+          companyName: formData.companyName.trim(),
+          country: formData.country.trim(),
+          product: formData.product,
+          grade: formData.grade.trim() || 'Not specified / Need guidance',
+          quantity: formattedQuantity || 'Not specified',
+        });
+
+        // Reset the form fields upon confirmed success to prevent duplicate submissions
+        setFormData({
+          fullName: '',
+          companyName: '',
+          businessEmail: '',
+          phoneWhatsapp: '',
+          country: '',
+          product: 'Psyllium Husk',
+          grade: '',
+          quantityNum: '',
+          quantityUnit: 'MT',
+          message: '',
+        });
+
+        setSubmitStatus({
+          success: true,
+          message:
+            data.message ||
+            'Your inquiry has been submitted successfully to our export desk.',
+        });
+      } else {
+        setSubmitStatus({
+          success: false,
+          message:
+            data.error ||
+            "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+        });
+      }
     } catch (err) {
       console.error('Error submitting RFQ to API:', err);
       setSubmitStatus({
         success: false,
         message:
-          'Could not connect to the email server. You can forward this inquiry directly via WhatsApp or email below.',
+          "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
       });
     } finally {
       setIsSubmitting(false);
@@ -315,8 +356,8 @@ function RFQFormContent() {
                     Inquiry Received
                   </h3>
                   <p className="text-sm text-charcoal-muted max-w-lg mx-auto">
-                    Thank you, <strong className="text-charcoal">{formData.fullName}</strong>. Your inquiry for{' '}
-                    <strong className="text-charcoal">{formData.product}</strong> has been transmitted to our Surat export desk.
+                    Thank you, <strong className="text-charcoal">{submittedSnapshot?.fullName || 'Valued Buyer'}</strong>. Your inquiry for{' '}
+                    <strong className="text-charcoal">{submittedSnapshot?.product || 'Psyllium Husk'}</strong> has been transmitted to our Surat export desk.
                   </p>
                   <p className="text-xs text-charcoal-muted max-w-md mx-auto pt-1">
                     Our trade team will review your requirement and follow up promptly with specification alignment and commercial details.
@@ -326,16 +367,16 @@ function RFQFormContent() {
                 <div className="p-4 rounded-xl bg-cream/40 border border-cream-dark max-w-md mx-auto text-left text-xs space-y-1.5">
                   <div className="font-semibold text-forest">Submitted Summary:</div>
                   <div className="text-charcoal-muted">
-                    <span className="font-medium text-charcoal">Company:</span> {formData.companyName}
+                    <span className="font-medium text-charcoal">Company:</span> {submittedSnapshot?.companyName}
                   </div>
                   <div className="text-charcoal-muted">
-                    <span className="font-medium text-charcoal">Destination:</span> {formData.country}
+                    <span className="font-medium text-charcoal">Destination:</span> {submittedSnapshot?.country}
                   </div>
                   <div className="text-charcoal-muted">
-                    <span className="font-medium text-charcoal">Grade:</span> {formData.grade || 'Need Guidance'}
+                    <span className="font-medium text-charcoal">Grade:</span> {submittedSnapshot?.grade}
                   </div>
                   <div className="text-charcoal-muted">
-                    <span className="font-medium text-charcoal">Quantity:</span> {formattedQuantityDisplay}
+                    <span className="font-medium text-charcoal">Quantity:</span> {submittedSnapshot?.quantity}
                   </div>
                 </div>
 
@@ -344,18 +385,8 @@ function RFQFormContent() {
                     type="button"
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({
-                        fullName: '',
-                        companyName: '',
-                        businessEmail: '',
-                        phoneWhatsapp: '',
-                        country: '',
-                        product: 'Psyllium Husk',
-                        grade: '',
-                        quantityNum: '',
-                        quantityUnit: 'MT',
-                        message: '',
-                      });
+                      setSubmittedSnapshot(null);
+                      setSubmitStatus(null);
                     }}
                     className="px-6 py-2.5 rounded-xl border border-cream-dark text-charcoal text-xs font-semibold hover:bg-cream/40 transition-colors"
                   >
@@ -415,11 +446,10 @@ function RFQFormContent() {
                         }
                       }}
                       placeholder="e.g. David Mueller"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${
-                        formErrors.fullName
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${formErrors.fullName
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-cream-dark focus:border-forest focus:ring-1 focus:ring-forest'
-                      }`}
+                        }`}
                     />
                     {formErrors.fullName && (
                       <p className="text-[11px] text-red-600 mt-1 font-medium">
@@ -444,11 +474,10 @@ function RFQFormContent() {
                         }
                       }}
                       placeholder="e.g. Alpine Nutrition GmbH"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${
-                        formErrors.companyName
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${formErrors.companyName
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-cream-dark focus:border-forest focus:ring-1 focus:ring-forest'
-                      }`}
+                        }`}
                     />
                     {formErrors.companyName && (
                       <p className="text-[11px] text-red-600 mt-1 font-medium">
@@ -475,11 +504,10 @@ function RFQFormContent() {
                         }
                       }}
                       placeholder="procurement@company.com"
-                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${
-                        formErrors.businessEmail
+                      className={`w-full px-3.5 py-2.5 rounded-lg border text-sm focus:outline-hidden transition-colors ${formErrors.businessEmail
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-cream-dark focus:border-forest focus:ring-1 focus:ring-forest'
-                      }`}
+                        }`}
                     />
                     {formErrors.businessEmail && (
                       <p className="text-[11px] text-red-600 mt-1 font-medium">

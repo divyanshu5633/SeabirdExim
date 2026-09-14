@@ -36,48 +36,47 @@ export async function POST(request: Request) {
       );
     }
 
-    const host = process.env.SMTP_HOST?.trim();
+    const host = process.env.SMTP_HOST?.trim() || 'smtp.gmail.com';
     const port = Number(process.env.SMTP_PORT) || 465;
-    const user = process.env.SMTP_USER?.trim();
+    const user = process.env.SMTP_USER?.trim() || 'sales@seabirdexim.com';
     const rawPass = process.env.SMTP_PASS?.trim() || '';
     const pass = rawPass.replace(/['"\s]/g, '');
     const toEmail = process.env.RFQ_TO_EMAIL?.trim() || 'sales@seabirdexim.com';
     const ccEmails = process.env.RFQ_CC_EMAIL?.trim() || 'admin@seabirdexim.com, info@seabirdexim.com';
+    const ccList = ccEmails.split(',').map((e) => e.trim()).filter(Boolean);
 
-    // If SMTP credentials are not yet configured in .env.local
-    const isUnconfigured = !host || !user || !pass || rawPass.includes('PASTE_YOUR') || pass === '';
+    // Fail immediately if SMTP is not properly configured - NEVER simulate success in production
+    const isUnconfigured =
+      !host ||
+      !user ||
+      !pass ||
+      rawPass.includes('PASTE_YOUR') ||
+      rawPass.includes('CHANGE_ME') ||
+      rawPass.includes('YOUR_APP_PASSWORD') ||
+      pass.length === 0;
 
     if (isUnconfigured) {
-      console.warn(
-        '[RFQ Service] SMTP not configured in .env.local. Captured first inquiry:',
-        { fullName, companyName, businessEmail, phoneWhatsapp, country, product, grade, quantity }
+      console.error(
+        '[RFQ Error]: SMTP server or credentials not configured in production environment. Inquiries cannot be dispatched.'
       );
 
-      return NextResponse.json({
-        success: true,
-        isSimulated: true,
-        message:
-          'Inquiry captured successfully. (Note: SMTP credentials not configured in .env.local, email was not physically sent via mail server).',
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+        },
+        { status: 500 }
+      );
     }
 
-    // Configure Nodemailer transporter (Gmail / Google Workspace or standard SMTP)
-    const isGmail = host === 'smtp.gmail.com' || host === 'gmail';
-    const transporter = nodemailer.createTransport(
-      isGmail
-        ? {
-            host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
-            auth: { user, pass },
-          }
-        : {
-            host,
-            port,
-            secure: port === 465,
-            auth: { user, pass },
-          }
-    );
+    // Configure Nodemailer transporter with Gmail SMTP
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure: port === 465,
+      auth: { user, pass },
+    });
 
     // Clean plain text representation
     const textContent = `
@@ -149,24 +148,41 @@ Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
     const subject = `[New Website Inquiry] ${product}${gradeSubject}${qtySubject} from ${companyName.trim()} (${country.trim()})`;
 
     // Send Mail to Seabird EXIM export desk
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"Seabird EXIM Website" <${user}>`,
       to: toEmail,
-      cc: ccEmails,
+      cc: ccList,
       replyTo: businessEmail.trim(),
       subject,
       text: textContent,
       html: emailHtml,
     });
 
+    if (!info || (Array.isArray(info.accepted) && info.accepted.length === 0)) {
+      console.error('[RFQ Error]: Email was not accepted by SMTP server:', info);
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+        },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Your inquiry has been submitted successfully to our export desk.',
     });
   } catch (error) {
-    console.error('[RFQ Error]:', error);
+    // Diagnostic log on server (NEVER logs credentials or SMTP_PASS)
+    console.error('[RFQ Error]: Exception during RFQ submission:', (error as Error)?.message || error);
     return NextResponse.json(
-      { success: false, error: (error as Error).message || 'Failed to dispatch inquiry' },
+      {
+        success: false,
+        error:
+          "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+      },
       { status: 500 }
     );
   }
