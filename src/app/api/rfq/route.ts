@@ -77,21 +77,39 @@ export async function POST(request: Request) {
           success: false,
           error:
             "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+          diagnostic: {
+            stage: 'env_validation',
+            hasHost: Boolean(host),
+            hasUser: Boolean(user),
+            hasPass: Boolean(pass),
+            user: user || null,
+          },
         },
         { status: 500 }
       );
     }
 
-    // Configure Nodemailer transporter with Gmail SMTP
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: port === 465,
-      auth: { user, pass },
-      connectionTimeout: 15000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-    });
+    // Configure Nodemailer transporter - use service: 'gmail' if host is Gmail for optimal serverless compatibility
+    const isGmail = host.toLowerCase().includes('gmail');
+    const transporter = nodemailer.createTransport(
+      isGmail
+        ? {
+            service: 'gmail',
+            auth: { user, pass },
+            connectionTimeout: 15000,
+            greetingTimeout: 10000,
+            socketTimeout: 15000,
+          }
+        : {
+            host,
+            port,
+            secure: port === 465,
+            auth: { user, pass },
+            connectionTimeout: 15000,
+            greetingTimeout: 10000,
+            socketTimeout: 15000,
+          }
+    );
 
     // Clean plain text representation
     const textContent = `
@@ -180,6 +198,7 @@ Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
           success: false,
           error:
             "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+          diagnostic: { stage: 'smtp_rejected', info },
         },
         { status: 500 }
       );
@@ -203,6 +222,12 @@ Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
         success: false,
         error:
           "We couldn't send your enquiry right now. Please try again or contact us directly at sales@seabirdexim.com.",
+        diagnostic: {
+          stage: 'transport_error',
+          code: err?.code || null,
+          responseCode: err?.responseCode || null,
+          message: err?.message || 'Unknown error',
+        },
       },
       { status: 500 }
     );
