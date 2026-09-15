@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+export const maxDuration = 30;
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -38,7 +42,7 @@ export async function POST(request: Request) {
 
     const host = process.env.SMTP_HOST?.trim() || 'smtp.gmail.com';
     const port = Number(process.env.SMTP_PORT) || 465;
-    const user = process.env.SMTP_USER?.trim() || 'sales@seabirdexim.com';
+    const user = process.env.SMTP_USER?.trim() || 'admin@seabirdexim.com';
     const rawPass = process.env.SMTP_PASS?.trim() || '';
     const pass = rawPass.replace(/['"\s]/g, '');
     const toEmail = process.env.RFQ_TO_EMAIL?.trim() || 'sales@seabirdexim.com';
@@ -84,6 +88,9 @@ export async function POST(request: Request) {
       port,
       secure: port === 465,
       auth: { user, pass },
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
     });
 
     // Clean plain text representation
