@@ -40,11 +40,16 @@ export default function SearchableCountrySelect({
     );
   });
 
+  const closeDropdown = () => {
+    setIsOpen(false);
+    setSearchQuery('');
+  };
+
   // Handle click outside to close dropdown
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        closeDropdown();
       }
     }
     if (isOpen) {
@@ -58,17 +63,16 @@ export default function SearchableCountrySelect({
   // Focus search input when dropdown opens
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         searchInputRef.current?.focus();
       }, 50);
-    } else {
-      setSearchQuery('');
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
   const handleSelect = (country: Country) => {
     onChange(country.name);
-    setIsOpen(false);
+    closeDropdown();
   };
 
   return (

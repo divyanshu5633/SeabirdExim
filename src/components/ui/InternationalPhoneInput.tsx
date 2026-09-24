@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronDown, Search, Check } from 'lucide-react';
-import { countries, Country, findCountry } from '@/data/countriesData';
+import { countries, Country } from '@/data/countriesData';
 
 interface InternationalPhoneInputProps {
   value: string; // Complete international number or national number
@@ -32,36 +32,43 @@ export default function InternationalPhoneInput({
   const [nationalNumber, setNationalNumber] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [prevValue, setPrevValue] = useState(value);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
 
-  // Initialize from incoming value if present
-  useEffect(() => {
-    if (!value) return;
-    const trimmed = value.trim();
-    if (trimmed.startsWith('+')) {
-      // Find matching dialCode from our countries list
-      const matched = countries.find((c) => trimmed.startsWith(c.dialCode));
-      if (matched) {
-        setSelectedCountry(matched);
-        const rest = trimmed.slice(matched.dialCode.length).trim();
-        setNationalNumber(rest);
-        return;
+  // Sync state when value changes externally (React recommended pattern)
+  if (value !== prevValue) {
+    setPrevValue(value);
+    if (!value) {
+      setNationalNumber('');
+    } else {
+      const trimmed = value.trim();
+      if (trimmed.startsWith('+')) {
+        const matched = countries.find((c) => trimmed.startsWith(c.dialCode));
+        if (matched) {
+          setSelectedCountry(matched);
+          setNationalNumber(trimmed.slice(matched.dialCode.length).trim());
+        } else {
+          setNationalNumber(trimmed);
+        }
+      } else {
+        setNationalNumber(trimmed);
       }
     }
-    // If not starting with +, treat as national number unless already set
-    if (!nationalNumber && trimmed) {
-      setNationalNumber(trimmed);
-    }
-  }, [value]);
+  }
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+    setSearchQuery('');
+  };
 
   // Click outside listener
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        closeDropdown();
       }
     }
     if (isOpen) {
@@ -75,11 +82,10 @@ export default function InternationalPhoneInput({
   // Focus search input when popover opens
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         searchInputRef.current?.focus();
       }, 50);
-    } else {
-      setSearchQuery('');
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
@@ -96,7 +102,7 @@ export default function InternationalPhoneInput({
 
   const handleCountrySelect = (country: Country) => {
     setSelectedCountry(country);
-    setIsOpen(false);
+    closeDropdown();
     const full = nationalNumber.trim() ? `${country.dialCode} ${nationalNumber.trim()}` : '';
     onChange(full, country.code, nationalNumber.trim());
     phoneInputRef.current?.focus();

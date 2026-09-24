@@ -52,7 +52,7 @@ function RFQFormContent() {
   }
 
   const initialCountry = searchParams.get('country') || '';
-  const countryObj = findCountry(initialCountry);
+  const [isAutoDetected, setIsAutoDetected] = useState(false);
 
   const [formData, setFormData] = useState(() => ({
     fullName: '',
@@ -66,6 +66,33 @@ function RFQFormContent() {
     quantityUnit: initialQtyUnit,
     message: searchParams.get('message') || '',
   }));
+
+  const countryObj = findCountry(formData.country) || findCountry(initialCountry);
+
+  // Auto-detect approximate country from connection on initial load when not pre-filled
+  React.useEffect(() => {
+    if (initialCountry) return;
+
+    let isMounted = true;
+    fetch('/api/geo')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (isMounted && data && data.detected && data.countryName) {
+          setFormData((prev) => {
+            if (prev.country) return prev; // Do not overwrite if user already selected
+            setIsAutoDetected(true);
+            return { ...prev, country: data.countryName };
+          });
+        }
+      })
+      .catch(() => {
+        // Silently fall back to normal manual selection
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [initialCountry]);
 
   const [formErrors, setFormErrors] = useState<{
     fullName?: string;
@@ -102,6 +129,7 @@ function RFQFormContent() {
   ];
 
   const handleCountryChange = (countryName: string) => {
+    setIsAutoDetected(false);
     setFormData((prev) => ({ ...prev, country: countryName }));
     if (formErrors.country) {
       setFormErrors((prev) => ({ ...prev, country: undefined }));
@@ -203,6 +231,7 @@ function RFQFormContent() {
         });
 
         // Reset the form fields upon confirmed success to prevent duplicate submissions
+        setIsAutoDetected(false);
         setFormData({
           fullName: '',
           companyName: '',
@@ -532,14 +561,31 @@ function RFQFormContent() {
 
                   {/* Country Dropdown */}
                   <div>
-                    <label className="block text-xs font-semibold text-charcoal mb-1.5">
+                    <label className="block text-xs font-semibold text-charcoal mb-1.5" htmlFor="country-select">
                       Country *
                     </label>
                     <SearchableCountrySelect
                       value={formData.country}
                       onChange={handleCountryChange}
                       error={formErrors.country}
+                      id="country-select"
                     />
+                    {isAutoDetected && !formErrors.country && (
+                      <p className="text-[11px] text-charcoal-muted mt-1.5 flex items-center justify-between">
+                        <span>Country detected automatically from your connection.</span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsAutoDetected(false);
+                            const trigger = document.getElementById('country-select');
+                            if (trigger) trigger.click();
+                          }}
+                          className="text-forest hover:text-forest-dark font-medium underline underline-offset-2 ml-1 cursor-pointer shrink-0"
+                        >
+                          Change
+                        </button>
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

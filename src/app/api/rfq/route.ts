@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import {
+  verifyLead,
+  formatLeadVerificationText,
+  formatLeadVerificationHtml,
+} from '@/lib/leadVerification';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -39,6 +44,14 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
+
+    // Server-side lead verification using Vercel request geolocation
+    // Note: The server calculates detectedCountry itself from headers and never trusts client-supplied geolocation
+    const verification = verifyLead({
+      request,
+      selectedCountryRaw: country,
+      phoneWhatsappRaw: phoneWhatsapp,
+    });
 
     const host = process.env.SMTP_HOST?.trim() || 'smtp.gmail.com';
     const port = Number(process.env.SMTP_PORT) || 465;
@@ -111,9 +124,11 @@ export async function POST(request: Request) {
           }
     );
 
-    // Clean plain text representation
+    // Clean plain text representation with internal LEAD VERIFICATION section
     const textContent = `
 NEW WEBSITE INQUIRY
+
+${formatLeadVerificationText(verification)}
 
 BUYER DETAILS
 - Full Name: ${fullName.trim()}
@@ -132,13 +147,15 @@ PRODUCT REQUIREMENT
 Sent via Seabird EXIM Website Procurement Desk (Surat, Gujarat, India)
     `.trim();
 
-    // Clean HTML email representation
+    // Clean HTML email representation with internal LEAD VERIFICATION section
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; background-color: #F9F7F2; padding: 24px; border-radius: 12px; border: 1px solid #E5DDD1;">
         <div style="background-color: #0A6684; padding: 20px; border-radius: 8px; text-align: center; color: #FFFFFF;">
           <h1 style="margin: 0; font-size: 22px; letter-spacing: 1px; color: #FFFFFF;">SEABIRD EXIM</h1>
           <p style="margin: 4px 0 0; font-size: 13px; color: #D2AC67; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">New Website Inquiry</p>
         </div>
+
+        ${formatLeadVerificationHtml(verification)}
 
         <div style="background-color: #FFFFFF; padding: 24px; border-radius: 8px; margin-top: 16px; border: 1px solid #E5DDD1;">
           <h2 style="font-size: 15px; color: #0A6684; margin-top: 0; border-bottom: 2px solid #F9F7F2; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">Buyer Details</h2>
